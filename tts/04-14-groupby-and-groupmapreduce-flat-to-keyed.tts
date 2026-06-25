@@ -1,0 +1,7 @@
+Group-by and group-map-reduce — flat to keyed.
+
+Group-by takes a function and partitions the collection by the result of that function. It returns a map from each key to the list of elements that produced that key. Grouping the transactions by their category, for instance, gives you a map from each category name to the list of transactions in it.
+
+Group-map-reduce takes that idea one step further, in a single pass. It takes three functions — a key function, a map function, and a reduce function. It groups by the key, maps each element, and then reduces within each group. So to get the total amount per category, you give it the category as the key, the amount as the mapped value, and addition as the reduce, and it returns a map from category to total in one pass. To count per status, the same shape — the status as the key, a constant one as the mapped value, and addition as the reduce — gives a map from status to count.
+
+The reason group-map-reduce earns its long name is efficiency and clarity. Whenever you find yourself writing group-by, then mapping the values, then reducing them, you are doing in three passes what group-map-reduce does in one — and it expresses the intent more directly.

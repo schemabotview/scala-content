@@ -1,0 +1,7 @@
+Either — encoding that a result is one of two possible types.
+
+Either of e and a has two cases. Left, carrying an e, is by convention the error or alternative case. Right, carrying an a, is by convention the success or main case. The mnemonic is that right sounds like correct.
+
+Either is what you reach for when you want typed errors — not an exception, not merely a missing value, but a specific error value that carries information about what went wrong. The error type sits on the left, the success type on the right.
+
+Scala 3's either is right-biased, which means its map, flat-map, and for-comprehension combinators all operate on the right side. A left short-circuits through the chain, carrying its error untouched. Picture a parse-positive function whose error type is a sealed trait with cases for empty input, bad format, and out of range. It returns a left holding the specific error when the input is wrong, and a right holding the number when it is valid. Then mapping over a right transforms the value, while mapping over a left passes the error straight through unchanged — so the error you got at the start is exactly the error you see at the end. That ability to name your errors, return them as data, and have them flow through a pipeline without being silently dropped is why either is the backbone of typed error handling in modern Scala.

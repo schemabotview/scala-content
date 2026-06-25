@@ -1,0 +1,7 @@
+List — the singly-linked default.
+
+List is Scala's immutable singly-linked list. It is built out of two shapes — the empty list, written nil, and the cons cell, written with the double-colon operator, which prepends one element onto another list. So the list one, two, three is internally one, cons, two, cons, three, cons, nil. Each cell holds a value and a pointer to the rest. Picture it as a chain — a cell holding one, with an arrow to a cell holding two, with an arrow to a cell holding three, with an arrow to nil at the end.
+
+That layout decides what is fast and what is slow. Reading the head, the tail, or whether the list is empty is constant time, because each just reads the first cell. Prepending with double-colon is constant time — a new cell pointing at the old list. But random access by index is linear, because it has to walk the chain. Reaching the last element is linear. And appending to the end is linear, because it walks the whole chain to get there.
+
+So reach for list when you build front-to-back and consume front-to-back, especially in code that uses recursion or pattern matching. One detail to note is a right-associative quirk — because the cons operator ends in a colon, writing zero double-colon the-list actually calls the method on the list, prepending zero. Pattern matching on head double-colon tail is the most idiomatic way to walk a list in Scala, and notebook six leans on it heavily.

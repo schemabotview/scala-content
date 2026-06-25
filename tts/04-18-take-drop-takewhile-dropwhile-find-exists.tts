@@ -1,0 +1,7 @@
+The predicate family — take, drop, take-while, drop-while, find, exists, and for-all.
+
+This is a family of predicate-driven operations, and the thing they share is that they all stop as soon as the answer is decided — none of them walks the whole collection unless it has to.
+
+Take of n gives you the first n elements, and drop of n skips the first n and keeps the rest. Take-while keeps elements from the start while a predicate holds, and stops at the first one that fails. Drop-while is its mirror — it skips from the start while the predicate holds, and keeps everything from the first failure onward. Notice that take-while and drop-while stop looking at the first failure, unlike filter, which checks every element.
+
+Find returns the first element matching a predicate, wrapped in an option — some of the element if one is found, none if nothing matches. Exists is true if at least one element matches, and short-circuits as soon as it finds one. For-all is true only if every element matches, and short-circuits as soon as it finds one that does not. Between find, exists, and for-all, you can answer is there one, is there any, and is it true of all — each as cheaply as the data allows.

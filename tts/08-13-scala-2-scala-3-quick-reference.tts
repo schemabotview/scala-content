@@ -1,0 +1,7 @@
+Scala 2 to Scala 3 quick reference.
+
+You will read Scala 2 code — because Spark and most of the existing ecosystem are Scala 2 — so here is the keyword translation between the two.
+
+A Scala 2 method with an implicit parameter becomes, in Scala 3, a method with a using parameter. A Scala 2 implicit val providing a type-class instance becomes a Scala 3 given. A Scala 2 implicit class that wraps a type to add methods becomes a Scala 3 extension on that type. The Scala 2 implicitly helper, used to fetch an instance, becomes summon in Scala 3. And a Scala 2 implicit conversion becomes a Scala 3 given conversion, together with the language import that opts into conversions.
+
+The important reassurance is that the mechanics are the same on both sides — the same resolution, the same idea of context passed by the compiler. Only the keywords are clearer in Scala 3, with each one doing a single job, where Scala 2's lone implicit keyword did all of them at once. So when you open a Spark source file and see the implicit keyword in its several roles, map it back through this table: implicit parameter to using, implicit val to given, implicit class to extension, implicitly to summon, implicit conversion to given conversion. The concept is identical; the spelling is what changed.

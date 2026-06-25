@@ -1,0 +1,7 @@
+Tuples — small, fixed groupings.
+
+A tuple is not a collection in the same sense as the others, but every map entry is built on one, so it is worth meeting now. A tuple holds a small, fixed number of values, of possibly different types. You construct it with parentheses, and you access its elements positionally — underscore-one for the first, underscore-two for the second, and so on.
+
+You can also destructure a tuple on the left side of a val. Writing val, then a parenthesized name and age, then equals a pair, binds both halves at once, which reads far better than reaching for the positional accessors.
+
+The important judgement is knowing when to switch away from tuples. Tuples are great for two or three values used immediately. But the moment you find yourself reaching for underscore-four, or writing a comment to explain what each position means, switch to a case class. A case class gives you named fields with the same convenience, and that is exactly what notebook five introduces. Think of the tuple as the quick, anonymous grouping and the case class as the named, durable record.

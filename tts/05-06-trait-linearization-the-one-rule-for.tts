@@ -1,0 +1,7 @@
+Trait linearization — the one rule for multiple inheritance.
+
+When a class mixes in multiple traits and several of them define the same method, which one wins? The answer is linearization. Scala arranges all of the supertypes into a single ordered list, from most-specific to least-specific, and method lookup walks that list.
+
+The rule, simplified, is that the left-to-right declaration order is reversed in the linearization, and super follows that order. So when you extend a, b, c, the lookup order is roughly c, then b, then a, then the universal supertypes. A super call from such a class reaches the implementation in the most recently mixed-in trait.
+
+In practice this rarely bites. Most of your traits will have non-overlapping methods, and when they do overlap, you usually want exactly the most recently mixed-in version, which is what linearization gives you. The reason it is worth meeting is stacking — picture a base greeter, and two traits that each override greet to call super and append an exclamation mark. A class that mixes them in one order and a class that mixes them in the other order both end up with the same number of exclamation marks, but built up in different sequences. That is linearization at work, and it is the keyword to recognise when you see it in a library or Spark source file.

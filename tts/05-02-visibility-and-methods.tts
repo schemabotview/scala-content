@@ -1,0 +1,7 @@
+Visibility and methods.
+
+Private and protected work as you would expect. Private is the strongest — a private member is accessible only within the class itself. Protected is a little looser — accessible within the class and within its subclasses.
+
+Scala adds one nuance worth knowing about. Marking something private to this makes a field accessible only from the exact same instance, not from other instances of the same class. You almost never need it in everyday code; it is mentioned only so it does not surprise you when you read it.
+
+The everyday use of visibility is encapsulating state behind methods. Picture an account class that takes an initial balance and keeps it in a private variable. A deposit method requires the amount to be positive before adding it. A withdraw method checks that there are sufficient funds, decrements only if there are, and returns a boolean to report success. And a current-balance method exposes a read-only view of the state. From outside, you can deposit and withdraw, but you cannot reach in and set the balance directly, because the field is private. That is the whole point — the methods are the only sanctioned way to change the state, so the invariants live in one place.

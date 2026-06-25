@@ -1,0 +1,7 @@
+Match types — types that compute.
+
+A match type is a type-level conditional. Given an input type, it computes an output type by matching on the shape of the input. The structure mirrors a value-level match expression, but everything happens at the type level, during compilation.
+
+This is the deepest part of the type system you are likely to read about in everyday Scala. The standard library uses it in tuple operations and in its immutable array type. You almost certainly will not need to write one yourself — but recognising the shape lets you read Scala 3 library signatures that would otherwise be opaque.
+
+Picture an element type that, given a container type, computes the type of its elements. Matching on string yields char, matching on an array of some type yields that element type, matching on an iterable of some type yields that element type. So the compiler can work out that the element of a string is a char, the element of an array of integers is an integer, and the element of a list of strings is a string — and it checks those at compile time, so a value declared with the computed type really must hold that type. The takeaway is just that types in Scala 3 can be computed from other types by matching on their shape, and when you meet one in a signature, you read it the same way you read a value-level match.

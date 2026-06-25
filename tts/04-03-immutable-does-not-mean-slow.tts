@@ -1,0 +1,7 @@
+Immutable does not mean slow.
+
+Here is a common worry. If I cannot mutate, surely every change copies the whole collection — and that must be wasteful.
+
+It is not, because the immutable collections share structure under the hood. When you prepend an element to a list, the language does not copy the entire list — it creates a new cell that points at the existing tail. The same idea applies to a vector, which shares branches of its internal tree, and to a map, which shares unchanged branches of its hash trie. Producing a new collection that differs slightly from an old one is usually a small, cheap operation.
+
+There are three reasons to prefer immutable by default. The first is safe sharing — an immutable collection can be passed across threads, across functions, and across Spark executors with no coordination at all. No locks, no defensive copies. The second is that it is easier to reason about — a value that cannot change is one less moving part. The third is that structural sharing makes derivation cheap, and Spark's entire programming model is built on exactly this assumption. Resilient distributed datasets and dataframes are immutable, and every Spark operation produces a new one rather than mutating an old one.

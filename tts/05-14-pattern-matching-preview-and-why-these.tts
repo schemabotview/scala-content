@@ -1,0 +1,7 @@
+Pattern matching preview — and why these shapes pair so well.
+
+Notebook six covers pattern matching in depth. The reason it lives right next to this one is that case classes and enums are precisely the shapes pattern matching is designed to destructure.
+
+A case class declares both the shape and the way to take it apart in a single line. An enum declares a whole closed set of shapes in one block. A match expression then matches against those shapes by name, the compiler checks that you have covered them exhaustively, and the destructuring pulls the fields out by name for you to use.
+
+Picture a notification enum with three cases — an email carrying a recipient and subject, a text message carrying a recipient and body, and a push carrying a device id, a title, and a body. A render function is just a match with three cases, each pulling out the relevant fields and formatting them. Map a list of notifications through render and each one is formatted according to its own case. That tight fit — declare the shapes once, match and destructure them by name, and let the compiler confirm completeness — is why these object-oriented data shapes and pattern matching are taught back to back.

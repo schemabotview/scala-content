@@ -1,0 +1,7 @@
+Object — singletons and companions.
+
+An object declares a single instance of a class. There is no constructor, no new keyword needed — the object simply is. You use it for utility methods, configuration, and constants that have no per-instance state.
+
+When an object has the same name as a class in the same file, it is called the companion object of that class. Companion objects are special — they can access the class's private members, and the class can access the object's. This is exactly where you put factory methods and shared utilities.
+
+The most important of those factory methods is apply. The apply method on a companion is the basis of the list-of-one-two-three idiom — writing list with no new keyword is really calling list dot apply. If you define your own apply on a companion, your class gets the same call-site sugar. Picture a money type with a private constructor and a companion object that offers an apply taking dollars and cents, a second factory that builds from raw cents, and a zero constant. Because the companion can see the private constructor, callers get clean factory methods — money of twelve, fifty — and never touch new or the private internals themselves.

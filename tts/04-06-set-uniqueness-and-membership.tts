@@ -1,0 +1,7 @@
+Set — uniqueness and membership.
+
+A set holds unique elements, with no defined iteration order. The fast operation is membership testing — asking whether an element is in the set is roughly constant time. Adding an element, removing one, and testing membership are all roughly constant time, while union, intersect, and difference are linear in the smaller side.
+
+There is one quietly powerful idea here. A set of a is also a function from a to boolean. So if you have a set of strings, you can call it like a function with a string and get back true or false — exactly the same as asking whether it contains that string. This means a set can be passed directly anywhere a predicate is expected — to filter, to exists, anywhere a function from element to boolean is wanted.
+
+That is more than a curiosity. Because a set already is a predicate, the higher-order machinery composes cleanly with it. You can hand a set straight to filter to keep only the elements that belong to it, without writing a lambda or converting anything first. Uniqueness, fast membership, and predicate-shaped — those three properties are why you reach for a set.

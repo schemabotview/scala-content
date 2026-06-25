@@ -1,0 +1,15 @@
+On-ramp one — the read-eval-print loop.
+
+You open the read-eval-print loop by running scala with no arguments. You get a prompt that evaluates one expression at a time, echoes the result back with its inferred type, and binds it to an automatic name like res-zero, res-one, res-two, so you can reuse it.
+
+Picture a typical session. You print the string hello scala three, and it prints straight back. You bind a value — val name equals the string ganesh — and the loop echoes that name now holds a string. You write an interpolated string that splices the name in, and the loop binds the result to res-zero, a string. You ask for res-zero dot length and get back res-one, an integer. You ask the type of res-zero and the loop replies string. Then you quit.
+
+Four details are worth registering from that session.
+
+The loop infers and echoes the type. This is the fastest way to ask the compiler, what type would this be — you type the expression and read the answer.
+
+The letter s before a string is a string interpolator. It lets you splice values into the string with a dollar sign. The compiler turns it into a string-builder chain at compile time, so there is no parsing cost at runtime. Other built-in interpolators are f, for print-f-style formatting, and raw, for disabling backslash escapes.
+
+The automatic res names are real bindings. Every expression that does not get an explicit name is bound to the next res slot, and you can reuse it on later lines.
+
+And lines that start with a colon are loop commands, not Scala. Colon-help lists them, colon-type shows an expression's inferred type without evaluating it, and colon-quit exits.

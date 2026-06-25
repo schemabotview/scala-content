@@ -1,0 +1,9 @@
+The function-n family — what a function value really is.
+
+When you write parameter, arrow, expression, the compiler creates an instance of function-one, parameterized by the argument type and the result type. Function-one is just a trait in the standard library, and its only abstract method is apply, which takes the argument and returns the result.
+
+There is one function-n trait per arity, from function-zero with no parameters, up to function-twenty-two. Beyond twenty-two you have to drop into other shapes, like tuples or case classes, but you will rarely hit that limit.
+
+This matters in three places. First, reading method signatures — when the docs say a parameter is of type integer-arrow-integer, they mean function-one of integer and integer. The arrow is sugar over the trait. Second, defining function-like classes — any class that defines an apply method can be called with parentheses syntax, because calling an object with parentheses desugars to calling its apply. This is exactly why list of one, two, three works — list is a companion object with an apply method, and the parentheses call is sugar for apply. Third, Spark's internals — the function-value boundary is where serialization happens. When a lambda is shipped to an executor, it is that function object that gets serialized and sent across the network.
+
+So the arrow you write every day is not special syntax bolted onto the language. It is an ordinary object, of an ordinary trait, with an ordinary apply method.

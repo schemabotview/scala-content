@@ -1,0 +1,7 @@
+The future mental model.
+
+A future of a is a placeholder for a value that will eventually be there. It has two interesting states. Incomplete means the computation is still running. Complete means it has either succeeded with a value, or failed with a throwable.
+
+The key property is that once a future completes, it never changes again. Multiple readers all see the same result, so a completed future is effectively an immutable, shared answer.
+
+The contract is the part that reshapes how you write concurrent code. You do not ask when the value will be there. Instead, you schedule what to do with it when it arrives. The combinators — map, flat-map, recover — wrap that scheduling so it looks like ordinary chaining, even though the work happens later and possibly on another thread. So rather than blocking and waiting, you describe the pipeline of what should happen to the value once it exists, and the future runs that pipeline for you when the value is ready. That shift — from waiting on a value to scheduling work against it — is the whole mental model, and everything else in this notebook builds on it.

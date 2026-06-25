@@ -1,0 +1,7 @@
+Using chains — composing environments.
+
+A method's using parameter list can require more than one context at once. Each required type becomes its own separate lookup, and the compiler satisfies each from scope independently. This is how you compose a larger environment out of small, independent capabilities — a method that needs both an execution context and a tracer simply lists both, and the compiler supplies each.
+
+Picture a logged-op method that takes an operation name, then a by-name body to run, and then a using list requiring both a tracer and a clock. Inside, it traces the start, runs the body, traces the finish along with the elapsed time, and returns the result. To call it, you make sure both givens are in scope — a tracer that prints its messages and a clock that reads the current time — and then you invoke logged-op with just the name and the block. The two contexts are found and threaded in for you, and you see the trace lines wrapped around the result.
+
+The point is that capabilities stay modular. Rather than bundling everything a method might need into one big context object, you list each requirement separately, and any caller that can provide all of them can call the method. This is the foundation of the environment-passing style that larger Scala applications and effect libraries build on — small, named contexts, composed by the compiler at each call.

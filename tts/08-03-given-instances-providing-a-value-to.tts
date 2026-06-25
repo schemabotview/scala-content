@@ -1,0 +1,7 @@
+Given instances — providing a value to context.
+
+If a using parameter is the request, a given is the supply. A given declares an instance the compiler can pick up when it is looking for a using argument of that type. You can write it as a full implementation — a given ordering for a person type with a compare method — or, when the given is just a value, as a short one-liner, like a given execution context bound to the global one.
+
+The crucial detail is that a given is found by type, not by name. The optional name you can attach is purely for documentation, and for letting you import or summon it explicitly when you need to. So picture a person case class with a given ordering that compares by age. Sorting a list of people picks up that given automatically and orders them by age, with no argument passed at the call site.
+
+There is one rule to respect: two givens for the same type in the same scope are an ambiguity error, because the compiler would not know which to choose. The way around it is scoping — you can put an alternative given, say an ordering by name instead of age, inside an object, and then import that object's given only where you want it. Importing it brings the by-name ordering into scope, and sorting now uses that one instead. So givens are supplied by type, found automatically, and disambiguated by where you place and import them.

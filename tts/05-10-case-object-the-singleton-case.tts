@@ -1,0 +1,7 @@
+Case object — the singleton case.
+
+When a case-class-style value has no parameters, you reach for a case object instead of a case class. There is only ever one of it, so constructing it more than once is not meaningful — and a case object captures exactly that.
+
+This is the canonical shape for sentinel values, status singletons, and the no-payload alternatives in an algebraic data type. The standard library is full of them — nil, the empty list, and none, the empty option, are both case-object-style singletons.
+
+A case object gets the same equals and to-string treatment a case class does, but with the key difference that only one instance ever exists. So comparing it to itself is always true, by identity, and comparing it to a different value is false. The way to think about it is this: a case class with fields can have many instances that differ by their data, while a case object is the degenerate case with no data — and therefore exactly one value. When an alternative carries no payload, that is the shape you want.

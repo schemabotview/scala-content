@@ -1,0 +1,7 @@
+The problem implicits solve.
+
+Some pieces of context need to be available across many calls in a chain, but they are not really the subject of any single call. The classic examples make this concrete. An execution context for every future operation in your code. An ordering that tells sorted how to compare elements of a generic type. A numeric instance that tells a generic sum method how to add elements together. A logging context carrying a trace id and a request id through every layer. Or a Spark encoder describing how to serialize values into Spark's columnar memory.
+
+If you thread these through by hand, every method gains an extra parameter, every call site gets noisier, and you gradually lose the ability to compose generic operations cleanly — the plumbing drowns the logic.
+
+Context parameters solve this by letting the compiler pass them for you. You declare what a method needs, and the compiler finds a value of that type in scope and supplies it on your behalf. The Scala 2 name for this machinery was implicit, which was one of the language's most powerful features and also one of its most confusing, because the single keyword did several different jobs. Scala 3 rebuilt the same machinery under clearer names — using, given, and extension — with each name doing exactly one job, and that is what the rest of this notebook walks through.

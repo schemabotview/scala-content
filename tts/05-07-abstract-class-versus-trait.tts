@@ -1,0 +1,9 @@
+Abstract class versus trait.
+
+Both an abstract class and a trait can have abstract members and concrete members. So when do you reach for one over the other?
+
+Reach for a trait when you want composition. Multiple traits can be mixed into one class, so traits are the right tool whenever a type needs to gather behaviour from several independent sources.
+
+Reach for an abstract class in two situations. The first is when you need a primary constructor with parameters — historically Scala 2 traits could not take parameters, and although Scala 3 traits can, with some restrictions, an abstract class is still the cleaner choice when construction parameters are central. The second is when you are interoperating with java code that expects a single-inheritance hierarchy.
+
+The default is trait. Reach for an abstract class only when you specifically need one of those features. If you are not sure, a trait is almost always the right starting point, precisely because it leaves the door open to composition later.

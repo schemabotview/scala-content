@@ -1,0 +1,11 @@
+Def — the method form.
+
+The everyday way to declare a piece of executable code in Scala is def. It defines a method, which is a member of a class, a trait, or a singleton object. A top-level def, with no enclosing object, compiles to a static method behind the scenes.
+
+The full shape, with the optional parts included, is the keyword def, then a method name, then an optional type-parameter list in square brackets, then a parameter list in parentheses, then a colon and a return type, then an equals sign, then the body. Picture a small square method that takes an integer and returns x times x, or a method that computes the hypotenuse from two sides — same skeleton each time.
+
+Two things to remember from the start.
+
+First, the return type can be inferred, but for public methods you should write it. The rule from notebook two applies here even more strongly — the return type is part of the method's contract with its callers.
+
+Second, the last expression in the body is the return value. There is no return keyword needed. You can write return, but in idiomatic Scala you almost never see it — it is mostly a debugging escape hatch. The value of the method is simply the value of its final expression.

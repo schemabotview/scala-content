@@ -1,0 +1,7 @@
+Upper and lower bounds — constraining type parameters.
+
+By default, a type parameter a can be replaced by any type at all. That is sometimes too permissive — the body of your method may need to know something about a. Bounds let you constrain it.
+
+An upper bound says a must be a subtype of some bound type. Inside the method, you can then call any method that bound type provides, because every a is guaranteed to have it. A lower bound says a must be a supertype of some bound type. Lower bounds are less common, and they mainly show up in the variance escape hatches covered shortly.
+
+The way to think about a bound is as the type-level form of this only makes sense for things that can do x. Picture a named trait with a name method, and an announce function generic over a-that-is-a-subtype-of-named. The bound is exactly what lets the body call dot name on the value — without it, the compiler would not know that an arbitrary a has a name at all, and the code would not compile. So upper bounds are how you write generic code that still gets to use specific capabilities, and lower bounds are the mirror image you reach for when widening a type toward its supertypes.

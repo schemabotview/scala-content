@@ -1,0 +1,9 @@
+Type inference — what the compiler does for free.
+
+Scala is statically typed, but the compiler does most of the typing work for you. For a val, the compiler reads the right-hand side, computes its type, and uses that as the type of the binding. No annotation needed.
+
+Most of the code you read and write will look like that, with no explicit types in sight. Write val a equals forty-two, and the compiler infers integer. Bind a decimal and it infers double. Bind a quoted string and it infers string. Bind a list of whole numbers and it infers list of integer. Bind a grouping of an integer, a string, and a decimal, and it infers a three-element tuple of those types.
+
+The honest rule is this. Let inference handle local values inside method bodies, but annotate every public-facing signature. A method's parameter and return types are part of its contract — hide them, and a later change to the body can silently change the type the rest of the world depends on. So always annotate the return type of a method that other code calls.
+
+That rule covers the common case. The next section covers the three specific places where you should write the type even when inference would otherwise succeed.

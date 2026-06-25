@@ -1,0 +1,7 @@
+Vararg parameters.
+
+A star after a parameter type marks it as a vararg. The caller can then pass any number of arguments of that type, and inside the method the parameter arrives as a sequence of that type.
+
+Picture a join-all method that takes a separator and then a vararg of strings, and returns the parts joined by the separator. A caller can pass the separator and then as many individual strings as they like, and they all collect into one sequence inside the method.
+
+There is one extra move worth knowing — passing an existing collection as the varargs. You cannot just hand a list to a vararg parameter directly, because the method expects loose arguments, not one list. Instead you append a star to the argument at the call site, which spreads the collection out into individual arguments. So with a list of tokens already in hand, you call join-all with the separator and then the tokens followed by a star, and the list is splatted into the vararg. In Scala 2 that splat was written with a colon and an underscore-star; the Scala 3 form is just the trailing star.

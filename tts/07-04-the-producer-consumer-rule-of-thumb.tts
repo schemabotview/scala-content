@@ -1,0 +1,9 @@
+The producer-consumer rule of thumb.
+
+The variance choice for a type parameter follows a simple rule, often called the producer-consumer rule.
+
+If the type parameter only appears in return positions — the methods produce values of type a — make it covariant, with the plus annotation. If it only appears in parameter positions — the methods consume values of type a — make it contravariant, with the minus annotation. And if it appears in both, leave it invariant.
+
+The standard-library examples make it concrete. An immutable list produces its elements through methods like head, and never takes an element as input, so it is covariant. Function-one consumes its argument and produces its result, so its argument is contravariant and its result is covariant. A mutable array-buffer both produces elements, through indexing, and consumes them, through append, so it has to be invariant.
+
+The important thing is that this is not just a convention — the compiler enforces it. If you mark a type parameter covariant and then write a method that takes it as an input, the compiler rejects it, complaining that a covariant type occurs in a contravariant position. So the rule is both the design guideline and the thing the compiler checks: produce-only is covariant, consume-only is contravariant, both is invariant.

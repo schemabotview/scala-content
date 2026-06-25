@@ -1,0 +1,9 @@
+Lazy val — computed at most once, on first read.
+
+A lazy val is a binding whose right-hand side is not evaluated when the declaration is reached. It runs the first time the name is actually used, and the result is then cached for every subsequent read.
+
+There are two common reasons to reach for it. The computation is expensive and might not be needed at all on some code paths. Or the computation depends on something that is not ready yet at declaration time but will be later.
+
+Behind the scenes, the compiler generates a private field for the cached result and a thread-safe initialization block. So a lazy val is safe to share across threads, at the cost of a small overhead on first access.
+
+Picture the difference concretely. You declare one eager val and one lazy val side by side, each printing a line and bumping a counter when it runs. At the point of declaration, only the eager one has run — the counter reads one, and the lazy val has not been touched. The first time you read the lazy val, its line prints and its value appears. The second time you read it, you see only the value, with no side effect, because it was cached. The key insight is that the work happens exactly once, and only if you ask for it.

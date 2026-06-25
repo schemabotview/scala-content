@@ -1,0 +1,11 @@
+Sort-by, sort-with, and sorted — three flavours of ordering.
+
+There are three ways to sort, increasing in flexibility.
+
+Sorted sorts using the natural ordering of the element type. It only works when a natural ordering is defined — numbers and strings have one, an arbitrary record does not. Sorting a list of numbers gives ascending order, and reversing gives descending.
+
+Sort-by takes a function that derives a sort key from each element. It is the cleaner choice when a single field decides everything — sorting the transactions by their amount, for instance. To sort descending on a numeric key, a common trick is to sort by the negated key.
+
+Sort-with takes a custom less-than function of two elements. It is the most flexible and slightly the noisiest, and it is what you reach for when the ordering is genuinely multi-step — say, sort first by status, and break ties by amount.
+
+So the progression is: sorted when the natural order is enough, sort-by when one derived key decides it, and sort-with when you need full control over the comparison.

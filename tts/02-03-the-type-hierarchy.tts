@@ -1,0 +1,9 @@
+The type hierarchy.
+
+Every value in Scala is an instance of a type, and every type sits somewhere in a single rooted hierarchy. Knowing the shape of that hierarchy explains a lot of later behaviour — what the compiler accepts, what null does, what an empty list's element type is, and why throw can appear in a position that expects a value.
+
+Picture a tree with one root at the top, called any. Any has two children. The first child is any-val, the parent of every value type backed by a java virtual machine primitive — integer, long, double, boolean, char, byte, short, float, plus the strange one-value type unit. The second child is any-ref, the parent of every reference type — every class, including standard library types like string, list, and map, plus every class you define yourself. Under the hood, any-ref is exactly java lang object.
+
+Below the tree, two more types sit specially. Null is the type of the literal null, and a subtype of every reference type. You can assign null to a string, though you should not, but you cannot assign null to an integer, because null is not a subtype of any-val. Nothing is the bottom of the entire hierarchy. It is a subtype of every type, including the value types, and it has no values at all. Nothing is the type of expressions that never return — like throw of a new exception.
+
+That last point has a practical payoff. Because throw has type nothing, and nothing is a subtype of everything, an expression that never returns satisfies any declared return type. So a method that only throws still type-checks against a return type of integer, or string, or anything else.

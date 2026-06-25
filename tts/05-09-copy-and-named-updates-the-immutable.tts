@@ -1,0 +1,7 @@
+Copy and named updates — the immutable update idiom.
+
+Mutable records use assignment. Immutable records use copy. The original is untouched, and you get back a new instance with the chosen field changed.
+
+Copy accepts any subset of the case class's parameters, by name. Any field you do not supply defaults to the original's value. This is the Scala idiom for updating one field of a record without rewriting the rest, and it reads cleanly because only the field that changes appears at the call site.
+
+The interesting case is nesting. Picture a person whose address is itself a case class. To change the person's age, you copy the person with a new age — one step. To change the city inside the nested address, you copy the inner address with the new city, and then copy the outer person with that new address. It is two steps, because each copy works at one level, and the original is untouched at both levels. This nested-copy pattern scales — combined with for comprehensions, or with a lenses library for deep structures, it lets you update one field buried inside an immutable tree without mutating anything along the way.

@@ -1,0 +1,7 @@
+Class — the basics.
+
+A class in Scala 3 declares a type, and the way to construct instances of that type. The shape is the keyword class, then the class name, then a parameter list in parentheses, then the body containing fields and methods.
+
+The crucial detail is what those parameters in parentheses are. They form the primary constructor, but they are not fields by default — they are just constructor parameters, visible inside the class body and nowhere else. To turn a parameter into a field, you prefix it with val, for an immutable public read, or with var, for a mutable public read and write. So a plain class that takes a name and a city can use both inside a greet method, but code outside the class cannot read the name unless you marked it val. That trips people up coming from other languages, where constructor arguments automatically become fields.
+
+Visibility defaults to public, and you use private or protected to restrict it, just as in java. And when you need more than one way to build an instance, you can add auxiliary constructors — a this method taking different parameters that ultimately delegates to the primary constructor — which lets you offer several construction shapes without disturbing the primary one.

@@ -1,0 +1,13 @@
+Why Scala, and where it sits next to its neighbours.
+
+There are three reasons people reach for Scala in 2026. The first is Apache Spark and big-data engineering. Spark itself is written in Scala — the native Spark application programming interface, the optimizer internals, the tuning knobs, all expressed in Scala first, with the python bindings coming second. The second reason is type-safe domain modeling. Algebraic data types, exhaustive pattern matching, generics with variance, type classes — the type system encodes invariants that the compiler then enforces, so whole classes of bugs become unrepresentable. The third reason is the java virtual machine ecosystem with functional ergonomics — every java library, every kafka client, every hadoop tool, but you write the glue with map, filter, and pattern matching instead of c-style for loops.
+
+Now picture Scala next to the three neighbouring languages you are likely coming from.
+
+Versus java — same java virtual machine, far less ceremony. No public static void main, no getters and setters, no new keyword required, type inference for most local values, and immutability as the default. The trade-off is some compile-time speed and some editor refactoring depth, exchanged for expressiveness.
+
+Versus python — static types catch errors before the program runs, and the same code runs an order of magnitude faster on the java virtual machine than c-python does on a hot path. The trade-off is python's gentle learning curve and quick startup, exchanged for a stricter compiler.
+
+Versus kotlin — both target the java virtual machine and both fix java's main pain points. Kotlin is the more conservative redesign, paired tightly with android and the jetbrains tooling. Scala is the more ambitious one — a deeper type system, true pattern matching, type classes. Scala wins when domain modeling is the hard part; kotlin wins when you want a smoother on-ramp from java.
+
+For this track the centre of gravity is the Spark connection. Where it is natural, every later notebook will point out the Scala feature being used inside Spark's own codebase.

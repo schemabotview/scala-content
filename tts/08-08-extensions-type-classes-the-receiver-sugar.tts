@@ -1,0 +1,7 @@
+Extensions plus type classes — the receiver sugar.
+
+Combine an extension method with a type-class lookup, and you get the best of both — you call a method on the value, but the implementation comes from a given instance. This is exactly how the standard library's sorted works under the hood.
+
+Picture a show type class, and then an extension on a generic type a that requires a using show of a. The extension adds a show method that simply delegates to the instance. Now, anywhere a show instance for a type is in scope, you can call dot show directly on any value of that type — on an integer, on a string, on a list. The call reads as if show were a method on the value, but the actual behaviour is supplied by the type-class instance the compiler found.
+
+This receiver style reads far better than the function-call form, where you would write describe of the value. It is what most modern Scala libraries adopt — it is how the cats library lets you write value-dot-as-json, how the z-i-o library gives an effect a flat-map method, and what a whole layer of Scala 3's ergonomic, derived application programming interfaces rests on. The pattern to recognise is method-on-the-value at the call site, instance-from-the-type-class underneath.

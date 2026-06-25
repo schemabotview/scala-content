@@ -1,0 +1,7 @@
+Extension methods — adding methods to types you don't own.
+
+An extension block adds methods to an existing type. The methods look as if they were defined on the type, but they are really just ordinary methods that the compiler translates at the call site. There is no subclassing, no monkey-patching, and no runtime cost beyond the method call itself.
+
+The shape is an extension on some type, followed by the methods you want to add. Picture an extension on string that adds a shout method, returning the uppercased text with an exclamation mark — now any string has a shout method, even though string lives in the standard library and you cannot touch its source. This is exactly how you would add a to-json method to your own case classes, a snake-case method to string, or any domain-specific shorthand, without inheritance.
+
+Extensions also work on generic types. Picture an extension on a list of a that adds a second method, returning the element at index one, and a safe-head method, returning none for an empty list and some of the head otherwise. Those methods then read as if list had always had them. The appeal is that extension methods let you grow the vocabulary of a type you do not control, with clean call-site syntax and full static dispatch — the right, type-safe alternative to the runtime tricks other languages use for the same goal.

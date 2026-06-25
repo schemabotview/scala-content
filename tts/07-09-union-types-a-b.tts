@@ -1,0 +1,7 @@
+Union types — a or b.
+
+A union type, written with the pipe operator between two types, is the type of values that are either an a or a b. It replaces a common Scala 2 workaround, where to express one-of-these-two-unrelated-types you had to invent a sealed trait, or reach for either, even when the two types had nothing in common.
+
+You take a union type apart by pattern matching on it. Picture a stringify function that accepts an integer-or-string. Inside, a match with one case for the integer and one case for the string handles each possibility and produces the right text. The compiler knows the value is exactly one of those two types, so the two cases cover it completely.
+
+Union types compose naturally everywhere — in collection element types, in function return types, anywhere a type is expected. A list whose element type is integer-or-string can hold a mix of both, and mapping the stringify function over it produces a list of strings. The appeal is that you can express genuinely heterogeneous-but-bounded data directly in the type, without the ceremony of a wrapper hierarchy, and pattern matching gives you back the specific type in each branch.

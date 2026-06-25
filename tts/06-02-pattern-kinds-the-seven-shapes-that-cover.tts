@@ -1,0 +1,7 @@
+Pattern kinds — the seven shapes that cover almost everything.
+
+The Scala pattern language is small. Most of what you will ever write falls into seven categories.
+
+A literal pattern matches exactly one value, like a specific number or string. A wildcard pattern, written underscore, matches anything and binds nothing. A variable pattern matches anything and binds the matched value to a name. A typed pattern matches values of a given type — using a colon and the type — and binds them, which is the type-safe replacement for casting. A constructor pattern matches a case class or enum case and destructures its fields by position. A tuple pattern matches a tuple and binds its halves. And a sequence pattern matches a list by its shape — for instance, at least two elements, binding the rest as a sequence with a trailing star.
+
+The full surface of pattern matching is just these seven kinds, combined with three modifiers you will meet shortly — guards, or-patterns, and at-sign bindings. Picture a single describe function that matches any value against a literal, a specific string, an integer bound to a name, a string bound to a name, a tuple, an empty list, a one-element list, a multi-element list, and finally a wildcard. Every input lands in exactly one case. Once these seven shapes are familiar, almost every match you read is just a recombination of them.

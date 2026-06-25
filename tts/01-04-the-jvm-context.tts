@@ -1,0 +1,11 @@
+The java virtual machine context.
+
+When you write Scala, the compiler — called scalac — turns your source into java virtual machine bytecode, the same instruction set java compiles to. The java virtual machine then loads that bytecode and executes it. Picture the pipeline this way. A file ending in dot scala goes through scalac and becomes a dot-class file containing bytecode. The java virtual machine loads that class file, runs the garbage collector to manage memory, and uses the just-in-time compiler to optimize hot code paths while the program runs.
+
+Three consequences are worth absorbing now.
+
+First, java virtual machine startup is not free. The machine itself takes a moment to boot — typically a few hundred milliseconds before your main method runs. For tiny scripts that feels slow; for long-running services it disappears into the noise.
+
+Second, you inherit the java virtual machine's strengths. A mature garbage collector frees you from manual memory management. The just-in-time compiler watches hot code paths and recompiles them down to optimized machine code at runtime, so a method called a million times can end up extremely fast. And the whole profiling ecosystem — java flight recorder, the async profiler, java mission control — works on Scala bytecode unchanged.
+
+Third, you inherit the java virtual machine's footprint. A Scala process holds the machine in memory — typically tens of megabytes of resident memory even for trivial programs. For a server that is invisible. For a command-line tool you ship to laptops, it is a real consideration. Graal v-m native image is the escape hatch when you truly need an ahead-of-time-compiled standalone binary; it works with Scala but adds build complexity.

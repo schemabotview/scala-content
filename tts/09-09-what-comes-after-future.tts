@@ -1,0 +1,9 @@
+What comes after future.
+
+The standard library's future is the baseline concurrency primitive, and it has known weaknesses. It is eager — a future starts the moment you create it, and you cannot cancel or restart it. It offers no built-in resource safety. And it interacts awkwardly with structured concurrency. So production Scala increasingly reaches for one of three alternatives.
+
+Cats effect, whose effect type is called i-o, is the typelevel library's answer. An i-o describes a computation without running it — you compose the description, then run it once at the very edge of the program. Because it is a description rather than a running thread, it supports cancellation, resource safety, and structured concurrency.
+
+Z-i-o is a similar effect type, but with explicit channels for the error type and the environment as well as the result. Same core idea as i-o, with built-in dependency injection and typed errors layered on.
+
+And Scala 3 direct-style concurrency, experimental as of 2026, offers structured concurrency, cancellation, and exception propagation without flat-map chains — code that looks ordinary and sequential but runs concurrently. The reassuring part is that you do not need any of these to start. Future will carry most working code for years. The signal to look at one of them is when you find yourself reaching for await, threading callbacks by hand, or wrestling with cancellation — that is the moment to reach for a real effect system instead of writing more future plumbing.

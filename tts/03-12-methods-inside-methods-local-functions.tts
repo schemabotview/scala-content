@@ -1,0 +1,7 @@
+Methods inside methods — local functions.
+
+Methods can be defined inside other methods. The inner method is only visible within the enclosing method. You reach for this when you have a helper that is meaningful only in the context of one outer computation — the alternative would be polluting the enclosing class with a private method that nobody else should ever call.
+
+Local methods also close over the values in their enclosing scope, so they can reference the parameters and local values of the outer method directly, without those being passed in again.
+
+Picture a format-invoice method that takes a list of name-and-amount pairs. Inside it, a small line helper formats one row, and a total helper sums the amounts straight from the outer parameter it has captured. The body then builds the rows, builds a total footer, and joins them with newlines. Both helpers are scoped to format-invoice — they read naturally there, they have direct access to the data, and they are invisible to the rest of the class. That is the whole appeal: keep a helper close to the one place it belongs.

@@ -1,0 +1,7 @@
+Type erasure — what the java virtual machine forgets at runtime.
+
+Scala generics, like java generics, are erased at compile time. At runtime, the java virtual machine sees a plain list, not a list of integer. The type parameter is purely a compile-time check, and it is gone by the time the program runs.
+
+The practical consequence is that a pattern match cannot distinguish a list of integer from a list of string at runtime — they are both just list once erased. The compiler warns you when you try, telling you the inner type test cannot be checked. You can test the outer type, that it is a list at all, but not what it is a list of. So a check that claims to recognise a list of integer actually answers the same for a list of string, because the element type was erased.
+
+The escape hatch is a class-tag, or a type-tag — a runtime token that carries the type information past erasure. You request one for a type parameter, and it gives you back enough reflected information to, say, allocate an array of the right element type at runtime. This matters well beyond toy examples: Spark uses class-tags extensively for serialization, which is exactly why so many Spark methods carry an implicit class-tag parameter on their generic type. When you see that implicit class-tag in a signature, it is there to defeat erasure.

@@ -1,0 +1,7 @@
+Lower bounds on covariant type parameters.
+
+There is a tension worth understanding. A method on a covariant type parameter cannot take that parameter as an input — that would put a covariant a in a contravariant position, which the compiler forbids. But sometimes you legitimately want to add an element to an immutable, covariant collection. The standard workaround is to introduce a fresh type parameter with a lower bound.
+
+Picture a covariant list with a prepend method. Instead of taking an a, prepend takes a fresh type parameter b, constrained to be a supertype of a, and returns a list of b. The reasoning is natural — if you prepend something more general than the current element type, the resulting list's element type widens to that more general type. Prepend an animal to a list of dog, and you get a list of animal. This is exactly what the immutable list's cons operator does in the real standard library.
+
+So the pattern is: keep the container covariant for all the read operations, and whenever you need an add operation that would otherwise break variance, give it its own lower-bounded type parameter. The list stays safely covariant, and adding an element simply produces a list whose element type is the least common supertype. It looks like a trick the first time you see it, but it is the standard, principled way immutable covariant collections support adding elements.

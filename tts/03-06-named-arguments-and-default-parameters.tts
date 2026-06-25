@@ -1,0 +1,11 @@
+Named arguments and default parameters.
+
+These are two features that, together, remove the most common class of bug in any language with positional parameters — passing the right values in the wrong order.
+
+Named arguments let you label any argument with its parameter name at the call site. The compiler then matches by name, not by position. This makes calls with many parameters readable, and it lets you skip optional parameters by naming only the ones you care about.
+
+Default parameters work from the other side. In the definition, any parameter can have a default value, and callers who omit it get the default.
+
+Together they enable a style where a complex configuration stays readable. Picture a connect method with a host, a port that defaults to a standard value, a user that defaults to something sensible, and an ssl flag that defaults to false. A caller can write connect with host equals the database host and ssl equals true, and skip the rest. That call is unambiguous even when the method has eight parameters, because each value is attached to its name.
+
+You can mix positional and named arguments, as long as the positional ones come first. The practical habit worth forming is to pass the first one or two arguments positionally and name the rest, especially booleans and ports, where a bare value at the call site tells the reader nothing.

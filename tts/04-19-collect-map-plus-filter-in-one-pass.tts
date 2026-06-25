@@ -1,0 +1,7 @@
+Collect — map plus filter in one pass.
+
+Collect takes a partial function and applies it to every element. Elements where the partial function is not defined are dropped; elements where it is defined are transformed. It is equivalent to filtering and then mapping, but it does both in one pass, and it is often clearer.
+
+A partial function is written as a block of case patterns — and only the patterns you actually list count as defined. We will meet partial functions properly in notebook six, but the shape is the familiar case-arrow form.
+
+Picture a list of mixed values — some integers, some strings, some other types. Collect with a single case that matches a string and uppercases it pulls out only the strings, already transformed, and silently skips everything else. The two-step version — filter to the strings, then map them — gives the same result but is less efficient and reads less directly. The pattern matching really shines on richer data: collecting over the transactions with a case that matches only an approved fuel transaction and extracts its amount filters and transforms in one move, all driven by the pattern. Whenever your filter condition and your transformation are both naturally expressed as a pattern, collect is the tool.

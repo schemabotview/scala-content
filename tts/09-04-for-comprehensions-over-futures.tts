@@ -1,0 +1,7 @@
+For comprehensions over futures.
+
+A for comprehension is the cleanest way to chain multiple futures. Each generator draws the success value out of one future, and the whole chain short-circuits on the first failure — just like the for comprehensions over option and either from notebook six, because it desugars into exactly the same flat-map and map calls.
+
+But there is a subtlety with futures that does not arise with option, and it is about timing. Each step in a for runs only once its dependencies complete. So if you place three future calls directly inside the generators, each one starts only after the previous finishes — they run sequentially, and the total time is the sum of all three.
+
+To run independent futures in parallel, you must start them before the for. Picture binding three already-running futures to values first, and only then writing the for comprehension over those three. Now all three are in flight at once, and the total time is just the slowest one, not the sum. The crucial point is that the for syntax looks identical in both cases — the difference between sequential and parallel is entirely in whether you started the futures before the comprehension or inside it. So the rule is simple: start everything you want to run in parallel first, then combine the already-running futures in the for.

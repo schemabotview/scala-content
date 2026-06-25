@@ -1,0 +1,15 @@
+Val versus var.
+
+There are two ways to name something in Scala. They look almost identical and behave very differently.
+
+A val is a single-assignment binding. Once it is given a value, the name cannot be re-pointed at a different value. This is the Scala default — reach for it first.
+
+A var is a mutable variable. The name can be reassigned to a different value over its lifetime. Use it deliberately when you actually need a counter, an accumulator, or a state machine — not as a reflex from another language.
+
+The bias is real. Idiomatic Scala uses val for the overwhelming majority of bindings. When new code reaches for var, that should prompt a question — is there a way to express this as a transformation that produces a new value, rather than a mutation that updates an old one.
+
+Two subtleties are worth pinning down now, because both come back later.
+
+First, val locks the binding, not the value it points at. If you bind a val to a mutable object — say a mutable array buffer, or a plain Scala array — the binding is fixed, but the contents of that object can still change in place. The takeaway is that immutability is a property of the type, not of the keyword val.
+
+Second, the right-hand side is evaluated immediately. When you write val x equals some expensive computation, that computation runs at the point of the declaration, not the first time you read x. If you want to defer it, that is a lazy val, which is the next section.

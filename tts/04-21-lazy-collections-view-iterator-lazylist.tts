@@ -1,0 +1,11 @@
+Lazy collections — view, iterator, and lazy-list.
+
+By default, evaluation is eager — every step of a chain runs immediately. A chain that maps, then filters, then takes three elements will first build a full intermediate list from the map, then a full filtered list, and only then take three from that. On a big collection, those intermediate lists are wasted work.
+
+Three Scala types let you avoid those intermediate allocations.
+
+A view makes a chain lazy. You call view, then map, filter, and take as usual, and nothing actually materializes until you ask for a concrete result at the end with something like to-list. Over a collection of a million elements, the view chain short-circuits — it produces only the few results you asked for, building no intermediate lists at all. Use a view for chains over big collections when you only need part of the result.
+
+An iterator is single-pass and lazy by nature, with no memoization. Reading from an iterator consumes it — so once you have drained it into a list, asking it for another list gives you nothing, because it is spent.
+
+A lazy-list is a list where every element is computed lazily and then memoized. It can represent a potentially infinite sequence — the infinite stream of natural numbers, for example — and as long as you only take a finite prefix, even an infinite, mapped lazy-list terminates.

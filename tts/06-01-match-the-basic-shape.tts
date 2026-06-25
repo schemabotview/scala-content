@@ -1,0 +1,9 @@
+Match — the basic shape.
+
+A match expression takes a value, walks an ordered list of case clauses, and returns the body of the first case whose pattern matches. The whole thing is an expression — it returns a value, just like an if.
+
+Picture matching on a day number against several cases that return day names, with a wildcard at the end for everything else. Three things are worth noticing.
+
+First, evaluation is top-down — the first matching case wins, so order matters. Second, the underscore is the wildcard pattern. It matches anything and binds nothing, and you use it as the default last case. Third, the whole expression has a single type — the compiler computes the common type of all the case bodies, so the value of the match is well-typed no matter which branch fires.
+
+And because cases can combine, you can ask a different question of the same value just by changing the patterns. Matching the day number against an or-pattern of the weekday numbers returning true, with a wildcard returning false, turns the same input into a simple is-it-a-workday boolean. That is the mental model to hold — a match is an ordered, total, value-returning dispatch on the shape of a value.

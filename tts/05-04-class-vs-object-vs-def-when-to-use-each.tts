@@ -1,0 +1,11 @@
+Class versus object versus def — when to use each.
+
+This is a common early confusion. Three things all hold code, and you choose between them by the question each one answers.
+
+A def is a piece of behaviour. Pure or impure, called from somewhere, stateless on its own. It lives on a class, a trait, an object, or at the top level.
+
+A class is a way to make many instances, each with its own state. It has a constructor — you say the class name with parentheses to make one.
+
+An object is exactly one of this thing. No constructor, and in a sense it existed before anyone asked for it.
+
+Two practical nudges follow from that. If you are tempted to put a def in a class, but the class has no fields and you are never going to make more than one of it, make it an object instead. And if you are tempted to make an object with mutable state shared across the whole program, stop and ask whether that state really belongs anywhere — global mutable state is the same problem in every language, and Scala does not make it any safer. So: def for stateless behaviour, class for many stateful instances, object for the one-and-only.

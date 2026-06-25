@@ -1,0 +1,7 @@
+The Scala 2 shape — sealed trait plus case classes.
+
+Before Scala 3 added the enum keyword, the standard way to express an algebraic data type was a sealed trait, with case classes or case objects extending it. You will still see this everywhere in the wild, including in every Spark source file, because Spark targets Scala 2 point 13.
+
+The shape is a sealed trait, and then a handful of case objects or case classes that extend it. The key word is sealed. It means no class outside this file may extend the trait. Because the set of subtypes is then fully known to the compiler, it can enumerate all of them — and that is exactly what enables exhaustiveness checking on a match.
+
+So the Scala 3 enum you just met compiles down to roughly this sealed-trait pattern under the hood. The guidance is simple: use enum in new code, and recognise the sealed-trait-plus-case-classes pattern when you read older code or Spark internals. Picture a Spark-style join-type modelled this way — a sealed trait with case objects for inner, left outer, right outer, and full outer, plus a case class for a custom predicate. A function that turns a join type into s-q-l matches over each case, and the sealed-ness lets the compiler confirm every join type is handled. Same idea as enum, older spelling.

@@ -1,0 +1,9 @@
+Fold and reduce — aggregation.
+
+Both of these collapse a collection down to a single value by repeatedly combining elements. The difference is whether you provide an initial seed.
+
+Fold takes a seed and a combining operation. It starts from the seed and folds in each element. Because it starts from a seed, it works on an empty collection too, simply returning the seed. The fold-left variant fixes the direction left to right, and fold-right goes the other way.
+
+Reduce takes only an operation, with no seed. It combines the first two elements, then combines that result with the third, and so on. Because there is no seed, it throws on an empty collection — and reduce-option is the safe variant that hands back an option instead.
+
+The rule for choosing between them is about types. When the seed type and the element type are the same — summing a list of numbers, say — reduce is shorter to write, and there are even named shortcuts like sum and product. When the accumulator type differs from the element type — for instance, building up a string or a map while iterating over a list — you need fold, because only fold lets you start from a seed of the accumulator's type. And one subtlety worth remembering: fold-left and fold-right give different answers for a non-commutative operation like subtraction, because the direction of combination matters.

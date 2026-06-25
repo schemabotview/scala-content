@@ -1,0 +1,9 @@
+String and the built-in interpolators.
+
+A string in Scala is a java lang string — the exact same class, the exact same methods. There is no separate Scala string type. What Scala adds is a small set of string interpolators — prefixes you put before the opening quote that change how the literal is parsed.
+
+There are three built-in ones. The letter s before a string splices in expressions, marked with a dollar sign and optional braces. The letter f before a string splices values with print-f-style format specifiers attached, so you can round a number to two decimal places or pad a field to a fixed width. And the letters r-a-w before a string splice like s, but do not process backslash escapes, so a backslash-n stays as two literal characters instead of becoming a newline.
+
+There is also the triple-quote form — three double quotes to open and close — for multi-line strings that contain quotes, backslashes, and newlines without any escaping. It composes with the interpolator prefixes, so you can put an s in front of a triple-quoted block and splice values into a multi-line template. This is the idiomatic way to embed a s-q-l query. You mark each line with a leading pipe and call strip-margin, and the leading whitespace up to and including the pipe is removed from every line.
+
+One thing worth knowing is that interpolators are not magic. When you write s of hello dollar name, the compiler rewrites it into a method call on a class called string-context, passing the fixed parts and the spliced values. That means you can define your own interpolators by extending string-context, which notebook eight revisits.

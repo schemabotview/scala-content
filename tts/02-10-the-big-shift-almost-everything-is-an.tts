@@ -1,0 +1,9 @@
+The big shift — almost everything is an expression.
+
+This is the single most important idea in this notebook. In imperative languages like python or java, an if is a statement. It controls flow, but it does not have a value. To get a value out, you assign a variable inside both branches.
+
+In Scala, an if is an expression. It evaluates to a value, and you bind that value directly with a val. The same is true of for-yield, of a block in curly braces, and of pattern matching, which you will meet in notebook six.
+
+To put it another way, you stop writing sequences of do-this, then-assign-that. You start writing — the value of this is the result of choosing between these alternatives. An if-else-if chain that picks a grade from a score is not a series of assignments; it is one expression whose value is the grade. A block that computes the area of a circle is an expression whose value is its last line. A for-yield over a list, with an optional guard, is an expression whose value is a new collection.
+
+This is a small mental shift with large downstream consequences for how Scala code reads. The one big exception is the while loop, which is statement-only and always evaluates to unit — and that is exactly the next section.

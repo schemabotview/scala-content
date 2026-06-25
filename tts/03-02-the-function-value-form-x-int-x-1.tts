@@ -1,0 +1,9 @@
+The function-value form.
+
+The other way to introduce a function in Scala is as a value. The syntax — a parameter in parentheses, then an arrow, then an expression — produces a function value. That is an object you can store in a val, pass as an argument, or return from another function.
+
+A function value is a real object on the heap. Its type is one of the function-n traits in the standard library — function-zero, function-one, function-two, all the way up to function-twenty-two. The number is the parameter count.
+
+The shape is a parameter list, an arrow, and an expression. For a function taking exactly one parameter, the parentheses around that parameter are optional. For a function taking zero parameters, you write empty parentheses, then the arrow, then the expression.
+
+A couple of details worth noticing. When you call a function value with parentheses, that is sugar — square of seven is really square dot apply of seven. And when you bind a function value to a val with an explicit function type on the left, that ascription tells the compiler what types the parameters should be, so you do not have to write them on the parameters themselves. The arrow form and the apply method are two views of the same object.

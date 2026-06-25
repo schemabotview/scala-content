@@ -1,0 +1,7 @@
+Why callbacks are mostly avoided.
+
+A future provides on-complete, which registers a callback for fire-and-forget — you schedule something to happen when the future completes, and the call returns immediately. This is the lowest-level escape hatch in the future application programming interface.
+
+Idiomatic Scala uses callbacks sparingly, for three reasons. Order is hard — two on-completes registered on the same future fire in an undefined order, so you cannot rely on one running before the other. Errors are hard — an exception thrown inside a callback is logged and dropped unless you explicitly handle it, so failures vanish quietly. And composition is hard — a callback does not return a value, so chaining several of them produces deepening nesting rather than a clean pipeline.
+
+Map, flat-map, and for comprehensions are almost always cleaner, because they return values and compose. So reach for on-complete only when you genuinely want a side effect with nothing downstream depending on it — for example, a logger that records that a request finished, where no further computation needs the outcome. For anything where the result feeds the next step, the combinators are the right tool, and the callback is the thing to avoid.

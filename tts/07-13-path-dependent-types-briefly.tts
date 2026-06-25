@@ -1,0 +1,7 @@
+Path-dependent types — briefly.
+
+Types can be members of values, not just members of classes. When a type is nested inside another type, the inner type belongs to a particular instance of the outer one — and the resulting type is called a path-dependent type, because its full name includes the specific value it lives on.
+
+Picture an outer class that contains an inner class, and two separate instances of the outer. Each instance has its own version of the inner type. A value built from the first instance's inner type fits where that exact instance's inner type is expected, but it does not fit where the second instance's inner type is expected — even though the inner class is written once, the two instances' inner types are distinct. The path to the type — through this particular outer value — is part of its identity.
+
+This is exotic, but real. Spark's typed dataset exploits path-dependent types in places to keep certain values tied to the context that produced them. It is mentioned here purely for recognition — you will almost never write a path-dependent type yourself, but when you see a type whose name runs through a value, this is what is going on.

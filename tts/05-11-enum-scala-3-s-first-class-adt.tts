@@ -1,0 +1,7 @@
+Enum — Scala 3's first-class algebraic data type.
+
+An enum declares a closed set of alternatives. Each alternative is a case. The compiler knows the set is closed, and that is the payoff — pattern matching on an enum can be checked for exhaustiveness, so the compiler warns you when you forget a case.
+
+The simplest form is alternatives with no payload, which is the equivalent of a java enum. A status enum with cases approved, declined, and pending. You can ask the enum for the list of all its values, and parse a string back into a value by name — the conveniences you would expect from a traditional enum.
+
+The more interesting form is when the alternatives carry data, and this is where an enum becomes a full algebraic data type. Picture a shape enum where a circle case carries a radius, a rectangle case carries a width and a height, and a triangle case carries a base and a height. Each case with parameters is essentially a case class, and each case without parameters is essentially a case object. You then write an area function as a match over the shape — one case per alternative, each pulling out the fields it needs and computing the area. Because the set of shapes is closed, the compiler can confirm you have handled every one of them, which is exactly the safety that makes enums the modern default for modelling a fixed set of alternatives.

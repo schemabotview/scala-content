@@ -1,0 +1,13 @@
+What Scala is.
+
+Scala is a statically typed, hybrid functional and object-oriented language that targets the java virtual machine. Martin Odersky designed it at the swiss federal institute of technology in 2004, with one goal — keep the engineering pragmatism of java, the libraries, the java virtual machine, the tooling, and fuse it with the expressive power of the m-l family of functional languages. The name is a contraction of scalable language. The same syntax should feel right for a five-line script and for a million-line distributed system.
+
+Four traits define Scala in one breath. The key insight is that each one shapes how the code you write later will read.
+
+First, it is statically typed but inference-heavy. The compiler catches type errors at build time, but you rarely write the types yourself, because the compiler infers most of them for you.
+
+Second, functions are values. You pass them as arguments, return them from other functions, and store them in collections, exactly like integers or strings.
+
+Third, it is immutable by default. A val, which is a single-assignment binding, is preferred over a var, which is a mutable variable. Standard-library collections are immutable unless you explicitly import the mutable ones.
+
+Fourth, it runs on the java virtual machine. Every java library on the central maven artifact repository is reachable from Scala with no ceremony — same classpath, same dot-class files, same bytecode.

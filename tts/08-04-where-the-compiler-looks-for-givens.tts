@@ -1,0 +1,7 @@
+Where the compiler looks for givens — implicit scope.
+
+The compiler resolves a using argument by searching specific places, in a fixed order. The full rules are intricate, but the practical version covers virtually every case.
+
+First, it looks at local definitions — givens defined in the current scope or any enclosing scope, including ones brought in by importing a given. Second, it looks at the companion objects of the type involved — if it is searching for an ordering of person, it checks the companion of ordering and the companion of person. Third, it looks at the companion objects of related types, such as base types and type-argument types.
+
+The practical takeaway is a strong recommendation: put your given instances in the companion object of one of the types involved. Picture a money case class with its given ordering placed in money's companion object. Sorting a list of prices then finds that given automatically, with no import anywhere. That placement has two benefits — the instance is found without anyone needing to remember to import it, and because it lives with the type, there is no risk of an unrelated instance being picked up from somewhere far away. Companion-object placement is the default home for a type class's canonical instance.

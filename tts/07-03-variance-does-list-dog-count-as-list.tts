@@ -1,0 +1,7 @@
+Variance — does a list of dog count as a list of animal?
+
+Imagine a list of dog, and a function that takes a list of animal. Can you pass the dogs to the function? That question is what variance answers, and there are three possible answers. Crucially, the answer is a property of the type constructor — list, option, function — not of the elements.
+
+Covariant means a list of dog is a list of animal — the subtyping flows the same direction as the elements. It is marked with a plus sign on the type parameter. Contravariant means the direction flips — a function that consumes an animal can stand in for a function that consumes a dog, because it accepts anything a dog could be and more. It is marked with a minus sign. And invariant means neither direction works; it is the default, with no annotation.
+
+The standard library marks the immutable containers — list, option, try, future — as covariant on their payload. Function-one is contravariant on its parameter and covariant on its return. Mutable collections, like array-buffer, are invariant. Variance matters because it changes which assignments and method calls type-check. Picture a covariant box — a box of dog can be assigned where a box of animal is wanted. An invariant box cannot. And a contravariant consumer goes the other way — a printer of animal can be used where a printer of dog is expected. Get the variance wrong and you get a confusing error about a covariant or contravariant position; the next section gives the rule that keeps you right.

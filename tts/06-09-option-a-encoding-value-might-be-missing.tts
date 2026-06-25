@@ -1,0 +1,7 @@
+Option — encoding that a value might be missing.
+
+Option of a is a sealed algebraic data type with exactly two cases. Some, carrying a value, means a value is present. None means there is no value.
+
+It is the Scala replacement for null, and the difference is about honesty in the types. Null lies — a string that is sometimes null still claims to be a string at all times, and you discover the truth only at runtime, through a null pointer exception. An option of string tells the truth in the type itself — every caller is forced to acknowledge the possibility that the value is missing, because the type says so.
+
+The standard library returns an option from any method that might legitimately have no answer — getting a key from a map, taking the head of a possibly-empty list, parsing a string to an integer. Most java application programming interfaces, by contrast, return null, so the idiom at the boundary is to wrap a java call in an option, which turns a possible null into a none. Picture asking a map for a key that is present and getting some of the value, asking for an absent key and getting none, and wrapping a possibly-null value so that null safely becomes none. From that boundary inward, your Scala code never has to fear a surprise null again.

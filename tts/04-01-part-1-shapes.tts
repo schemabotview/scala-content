@@ -1,0 +1,7 @@
+Part one — shapes.
+
+This notebook has two halves. The first half is about shapes — the five collections you reach for daily, and what each one is good at. The second half is about operations — the higher-order methods that work on all of them, plus the for-yield sugar that desugars into exactly those operations.
+
+In this first half, we will walk through the two parallel collection hierarchies, then look at why immutable does not mean slow, and then meet the five workhorse shapes — list, vector, set, map, and array. We will finish with tuples, which are a natural bridge into the case classes you will meet in notebook five.
+
+The key idea to hold onto is that you choose a shape by how you intend to access it. Build front-to-back and walk recursively, and a list fits. Need indexed access, and a vector fits. Test membership, and a set fits. Look things up by key, and a map fits. Talk to java or to Spark internals, and an array fits. The rest of part one is just filling in why.

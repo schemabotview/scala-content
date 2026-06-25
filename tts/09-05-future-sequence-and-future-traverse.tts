@@ -1,0 +1,7 @@
+Future dot sequence and future dot traverse.
+
+Here is a very common shape. You have a list of inputs, you want to fire off a future for each one, and you want to end up with a single future of the resulting list — rather than a list of futures you would have to await one by one.
+
+Future dot traverse takes the list and a function. It applies the function to each element to produce a future, and then aggregates all of those into one future of the list of results. It is equivalent to mapping the function over the list to get a list of futures and then sequencing them, but it does both in one pass. Picture a lookup applied across a list of ids — traverse starts one future per id and collects them into a single future of the list of user strings, which you await once.
+
+Future dot sequence is the other half. Given a list of futures you already have in hand, it turns it into a future of the list of their values. You reach for it when the list of futures already exists, whereas traverse is for when you are starting from the inputs. One caution applies to both — if any input future fails, the resulting future fails as well, in exception style. If instead you want the result to succeed with whatever made it through, recover each individual future first, before sequencing or traversing.

@@ -1,0 +1,7 @@
+Part two — operations.
+
+The operations in this half apply uniformly across list, vector, set, the values of a map, array, and even string, which behaves like an indexed sequence of characters for these purposes. The payoff is that you learn them once and they work everywhere.
+
+To make the examples concrete, picture a small set of demo data — a list of bank transactions. Each transaction is a small record with an id, a category, an amount, and a status. The list holds seven transactions across a few categories — some groceries, some fuel, some dining — with a mix of approved and declined statuses. We will run the operations against that list so each method has something realistic to chew on.
+
+The mental model for this whole half is derive, do not mutate. Every operation here takes a collection and returns a new one — it never changes the original in place. You chain them together — filter, then map, then group — and each step hands a fresh collection to the next. That is the same model Spark uses at scale, so the habits you build here carry straight over.

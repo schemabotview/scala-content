@@ -1,0 +1,13 @@
+The numeric types.
+
+Scala's numeric types are thin wrappers over java virtual machine primitives. Their sizes and ranges are exactly what the machine provides. Byte is eight bits. Short is sixteen. Integer is thirty-two bits, ranging roughly plus or minus two point one billion, and it is the default for a whole-number literal. Long is sixty-four bits — to write a long literal, add the suffix capital L. Float is thirty-two-bit single-precision floating point, with the suffix lowercase f. Double is sixty-four-bit double-precision, and it is the default for a decimal literal. And for numbers without bounds, there is big-int for arbitrary-precision integers and big-decimal for exact decimal arithmetic, both constructed from a quoted string.
+
+Three things you have to remember when working with these.
+
+First, the default literal types. A whole-number literal is an integer, not a long. A decimal literal is a double, not a float. Add the suffix capital L or lowercase f to override.
+
+Second, overflow is silent. Adding past the maximum of an integer wraps around to a large negative number, and the compiler will not warn you. Reach for long when magnitudes can grow, or big-int when they can grow without bound.
+
+Third, floating point is not decimal. Zero point one plus zero point two does not give exactly zero point three in a double — you get a tiny trailing error, exactly as in every other language that uses the i-e-e-e seven fifty-four standard. For money, or any context where exact decimal arithmetic matters, reach for big-decimal.
+
+One more detail on conversions. Promotion is one-directional. A small integer widens to a long or a double automatically, but a long does not narrow back to an integer on its own — you have to call to-int explicitly, and accept that you may lose information.

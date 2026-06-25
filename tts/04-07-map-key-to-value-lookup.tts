@@ -1,0 +1,9 @@
+Map — key to value lookup.
+
+Map is the immutable hash map. It maps keys to values, with unique keys. You construct one with the arrow notation — a key, an arrow, a value — wrapping a series of those pairs in map of parentheses.
+
+Lookup has two forms. The unsafe form calls the map like a function, with the key in parentheses, and returns the value directly — or throws a no-such-element exception if the key is missing. The safe form calls get with the key and returns an option — some of the value if present, none if missing. Notebook six covers option in depth. There is also get-or-else, which returns the value if present and a supplied default otherwise, without involving option at all.
+
+You modify a map by deriving a new one. Adding a pair gives a new map with that entry, removing a key gives a new map without it, and the updated method changes the value at an existing key. All of them return new maps and leave the original alone.
+
+One thing worth understanding is the arrow notation itself. The arrow is not special syntax built into map. The arrow operator is defined on every value, and it simply returns a two-element tuple. So a key arrow a value is just the tuple of key and value, and map of parentheses is a collection of such tuples. That is exactly why iterating a map yields tuples, and why you can destructure each entry into a name and a value inside a for expression.

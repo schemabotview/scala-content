@@ -1,0 +1,11 @@
+Methods versus function values — the gap and the bridge.
+
+A def defines a method, which is a member of some enclosing class. A parameter, arrow, expression introduces a function value, which is a heap object of type function-one or one of its siblings. On the java virtual machine, these are two genuinely different things.
+
+A method invocation compiles to a single bytecode instruction, with no object allocation. A function value is a real object, and calling it goes through its apply method.
+
+This matters because most of the standard library, and most Spark application programming interfaces, are written to take function values — map, filter, for-each. Strictly speaking, you cannot hand a method directly to a parameter that expects a function. Except that the compiler does it for you. The conversion is called eta-expansion — the compiler wraps the method in a function value automatically whenever the context expects one.
+
+In Scala 3, eta-expansion happens implicitly anywhere a function type is expected. So you can write a list dot map, passing a method by name, and it just works — the method is wrapped into a function value for you. In Scala 2 you had to signal this with a trailing underscore after the method name. You will still see that underscore in older code; it is no longer required.
+
+The bridge runs both ways. A method flows into a function-shaped slot through eta-expansion, and a function value flows into a method-shaped slot for free, because function-one defines apply.

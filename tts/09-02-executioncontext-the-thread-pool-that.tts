@@ -1,0 +1,7 @@
+Execution context — the thread pool that runs futures.
+
+Every future operation needs an execution context, which is a thread pool. This is important to internalise — the combinators do not run on the thread that called them. They run on the execution context. So when you map over a future, that mapping function is scheduled onto the pool, not executed inline.
+
+You provide an execution context through the same context-parameter machinery from notebook eight — it is supplied implicitly. There are three common sources. The global execution context is the standard one, a fork-join pool sized to the number of c-p-u cores, and a good default for general use. A custom executor-backed context is what you use when you need a different sizing strategy — a smaller pool, a bounded queue, or named threads for debugging. And library-specific contexts exist too — akka actors bring their own, and Spark internally uses its own scheduler.
+
+The implicit-parameter shape is what every future application programming interface uses. Picture an expensive method that takes an integer and a using execution-context parameter, and returns a future. Callers either have an execution context already in scope — most commonly by importing the global one into implicit scope — or they pass one explicitly with using. When you start a future, the call returns immediately and the body is scheduled onto the context, which is exactly why you can kick off work and keep going while it runs elsewhere.

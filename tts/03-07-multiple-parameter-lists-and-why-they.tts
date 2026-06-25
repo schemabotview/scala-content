@@ -1,0 +1,9 @@
+Multiple parameter lists, and why they matter.
+
+A def can have more than one parameter list. The syntax just repeats the parentheses — one list, then another — and you call it by applying one list after the other. At the surface this looks like a cosmetic variation, but it enables three things you cannot get from a single parameter list.
+
+The first is type inference flowing left to right. Scala infers types one parameter list at a time. If the result of the first list constrains what the second list's lambda parameters should be, splitting them into two lists makes the inference work. This is exactly why fold-left is declared with two lists. You pass the seed value in the first list, and because the seed pins down the accumulator type, the combining function's parameter types in the second list come for free — you do not have to write them.
+
+The second is partial application. You can apply only the first list, omit the rest, and get back a function value waiting for the missing arguments. That is the subject of the next section.
+
+The third is the using parameter list. Scala 3 puts contextual, implicit parameters in their own parameter list, introduced by the using keyword. A method puts its explicit parameters in the first list and its contextual ones in a separate using list, and the compiler supplies the contextual ones from scope. Notebook eight covers this in depth.

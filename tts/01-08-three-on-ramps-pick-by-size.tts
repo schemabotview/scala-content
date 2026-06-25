@@ -1,0 +1,11 @@
+Three on-ramps — pick by size.
+
+Scala gives you three ways to run code. The key is to pick the one that matches the size of what you are doing.
+
+The read-eval-print loop is for one-line exploration — what does this expression actually do. It is the cheapest feedback loop in the language. You open it, type, and see the result and the inferred type on the same line, with no file at all.
+
+The scala-cli runner is for a single file you want to keep around. You add dependencies through a magic comment at the top of the file. The tool was donated by virtus lab to the Scala center, and as of 2026 it is the official Scala runner.
+
+The build tool, called s-b-t, is for anything that has more than one file, or that you want to build, package, and test seriously. This is what Spark itself uses, and what notebook eight will lean on for the type-class examples.
+
+So the rule of thumb is simple. Reach for the read-eval-print loop to ask a quick question, scala-cli for a small script or tool, and the build tool for a real project.

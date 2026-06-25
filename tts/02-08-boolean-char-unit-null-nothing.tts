@@ -1,0 +1,13 @@
+Boolean, char, unit, null, and nothing.
+
+These are the non-numeric value types, plus the strange residents at the edges of the hierarchy.
+
+Boolean is just true and false, backed by a primitive.
+
+Char is a sixteen-bit unsigned integer interpreted as a u-t-f sixteen code unit, written with single quotes. Because it is only sixteen bits, characters outside the basic multilingual plane — most emoji, for instance — need two chars to represent, a so-called surrogate pair. The practical consequence is that the length of a string containing a single emoji is two, not one. For real unicode handling, work with the string and use its code-point methods.
+
+Unit is the type with exactly one value, written as an empty pair of parentheses. It is used as the return type of methods that exist only for their side effects. It is the equivalent of java's void, except that unit is a real type you can actually write down.
+
+Null is the type of the literal null, and a subtype of every reference type. Modern Scala 3 can opt into explicit nulls with a compiler flag, which stops null from being silently assignable to a string. But the better advice is to reach for option, from notebook six, in every situation where you would otherwise use null.
+
+Nothing is the bottom type. It has no values. It is the inferred type of a throw, and of the triple-question-mark placeholder that means not implemented yet. Anywhere an expression of type nothing appears, the compiler accepts it as any type, because nothing is a subtype of everything.

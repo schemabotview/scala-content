@@ -1,0 +1,9 @@
+Higher-order functions.
+
+A higher-order function is one that either takes a function as a parameter, returns a function, or both. This is the central idea that makes functional programming work. Instead of writing one loop for each shape of transform-every-element, you write one method that takes the transformation as an argument.
+
+The standard library's collection methods are the canonical examples — map, filter, fold-left, reduce, take-while — and notebook four covers those in depth. Here the focus is just on how you declare a higher-order function and how you call one.
+
+To declare one, you give a parameter whose type is a function type. Picture a transform-all method that takes a list of integers and a function from integer to integer, and simply maps the function over the list. There are then three natural ways to call it. You can pass a previously defined method by name and let the compiler eta-expand it. You can pass an inline lambda. Or you can pass the underscore shorthand. All three give the same result.
+
+Functions also flow the other way — out of a function. Picture an adder-factory that takes a base number and returns a function from integer to integer that adds that base. Call it with five and you get back a function that adds five; call it with ten and you get a function that adds ten. Each returned function has captured its own base. That capturing is exactly the closure idea we will lean on shortly.

@@ -1,0 +1,7 @@
+Enum with parameters and methods.
+
+An enum can declare shared parameters and methods that apply to every case. Each case then passes its own values up to those parameters when it is constructed, so the cases share a common structure while differing in their data.
+
+The classic example is a planet enum. The enum itself takes a mass and a radius as parameters, and each case — mercury, venus, earth, mars — supplies its own physical constants. Inside the enum body, you can put shared behaviour that all cases inherit. A private constant holds the gravitational constant. A surface-gravity method computes gravity from the mass and radius of whichever planet it is called on. A surface-weight method takes a mass and returns its weight on that planet, reusing surface-gravity.
+
+So asking earth for its surface gravity gives you the familiar value near nine point eight one, and asking mars for the surface weight of a seventy-five kilogram mass gives the lighter result you would expect. The thing to take away is that an enum is not limited to bare labels — it can be a small, closed family of values that each carry data and all share methods, which makes it a remarkably compact way to model a fixed set of richly-behaved alternatives.

@@ -1,0 +1,7 @@
+Error handling — try, catch, and finally.
+
+Scala has the java-style try, catch, and finally, and the nice difference is that the bodies are expressions. So you can bind the result of a try to a val. The shape is a try around a risky operation, a catch with a case clause for the relevant exception that returns a fallback value, and an optional finally that always runs a cleanup step, whether or not anything threw.
+
+The right place for try-catch is at the edge of your program — a main method, or a hypertext-transfer-protocol request handler — where you need to translate an exception into a response or an exit code. Picture a parse-quantity that tries to convert a string, catches a number-format exception by printing a message and returning zero, and runs a cleanup line in finally either way. On valid input it returns the number and still runs the cleanup; on bad input it reports the error, returns zero, and still runs the cleanup.
+
+But inside your logic, the try, option, and either types from notebook six are usually cleaner. They make failure part of the type rather than an out-of-band channel that travels invisibly up the call stack. So use try-catch-finally at the boundary, where you must deal with the java exception model directly, and prefer the typed failure types everywhere in between, where you want failure to be a value you can see and compose.

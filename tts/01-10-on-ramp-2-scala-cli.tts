@@ -1,0 +1,13 @@
+On-ramp two — scala-cli.
+
+For anything longer than two lines, put it in a dot-scala file and run it with scala-cli. Picture a tiny file with an annotation, at-main, followed by a method named hello that returns unit and prints hello from scala-cli. You run it from the same directory with scala-cli run, and it prints that line.
+
+Two new shapes appeared in that tiny file.
+
+The at-main annotation marks the entry point. Any top-level method tagged at-main is callable as a program, and the method name becomes the command name. There is no object-extends-app boilerplate that Scala 2 needed, and no public static void main ceremony that java needs.
+
+The return type unit is Scala's equivalent of void. The difference is that unit is a real type with exactly one value, written as an empty pair of parentheses. That sounds pedantic, but it matters when functions are values — a function that returns nothing still has a real return type you can write down. We will lean on this in notebook three.
+
+An at-main method can also take parameters, and scala-cli will parse the command-line arguments to match them. You pass them after a double dash, which separates scala-cli's own flags from the arguments to your program.
+
+Finally, you can add dependencies inside a single file. Scala-cli reads magic comments at the top of the file that begin with two slashes and a greater-than sign. The common ones are using-scala, followed by a version, and using-dep, followed by a maven coordinate. The coordinate uses two percent signs between the organization and the artifact name, which tells the tooling to append the Scala binary version automatically. Scala-cli then resolves, compiles, and runs — no build file, no project directory. For exploring a library or writing a small tool, this is the fastest path.

@@ -1,0 +1,7 @@
+When to reach for each.
+
+Here is a small decision table for the three types.
+
+When a value might be present or absent, and the absent case is perfectly normal, reach for option. When an operation might throw, and you want to handle or report the exception as a value, reach for try. And when an operation might fail with one of several known errors, and you want to carry information about which one, reach for either of an error type and a result. In particular, when you are modelling business logic where what went wrong is part of the domain, use either with your own error algebraic data type on the left. And when you are at the boundary of a java application programming interface that throws, wrap it in a try first, then convert to either if the error belongs in your domain.
+
+In modern Scala codebases, especially anything built on the typelevel libraries, either — and its richer cousins, like either-t and validated — is the workhorse. Option covers the simpler present-or-not case. And try shows up mostly at integration boundaries with exception-throwing application programming interfaces. The unifying theme is that all three replace a category of bug that languages without them quietly suffer — the surprise null, the uncaught exception, the unhandled error — by lifting the failure into the type, where the compiler keeps you honest.

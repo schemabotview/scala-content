@@ -1,0 +1,7 @@
+Reading harder Scala signatures.
+
+Let us put the notebook to work decoding a couple of real signatures. Consider future's flat-map. It declares a fresh type parameter s in square brackets, takes a function from t to a future of s, then has a second parameter list that takes an execution context with the using keyword, and returns a future of s.
+
+Decoded piece by piece: the s in square brackets is the result type of the chained future. The function from t to future-of-s is the chaining step you supply. The second parameter list, marked using, provides the execution context contextually rather than explicitly — that is the subject of notebook eight. And the return type is a future of s. Once you name each part, the signature is just flat-map, lifted to futures.
+
+A more dramatic example is traverse from the cats library — generic over a higher-kinded g with a context bound, plus a and b, taking an f-of-a, then a function from a to g-of-b, and returning g-of-f-of-b. The new ideas here are that g is itself a type constructor, like list or option, which is what higher-kinded means, and that the context bound demands g have a certain capability available. We will meet context bounds and type classes in notebook eight. The point is not that you will write signatures like this in everyday code — it is that you will read them, and the rules from this whole notebook are exactly how you decode them, one type parameter and one bound at a time.

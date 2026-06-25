@@ -1,0 +1,11 @@
+Indentation versus brace syntax.
+
+Scala 3 supports two equivalent surface syntaxes for code blocks. Take the same small method. In indentation style, you write the signature, then an equals sign, and the body simply follows on the next lines, indented. In brace style, you wrap that same body in curly braces after the equals sign.
+
+Both parse to exactly the same syntax tree. Pick whichever reads better for the file you are editing, and stay consistent within a file.
+
+This track defaults to indentation style, for two reasons. It matches the direction the language designers are nudging you toward. And it removes visual noise from short methods — and most methods you write should be short.
+
+You will see brace style when you read Spark's source code, because Spark still targets Scala 2 point 13. Do not let the braces throw you. It is the same language.
+
+One subtlety. In indentation style, an optional end marker can close a long block, mainly for clarity on a long method or class. It is never required. Use it sparingly — if you are tempted to add it for readability, the method is probably too long and should be split first.

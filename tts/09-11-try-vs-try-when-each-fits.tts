@@ -1,0 +1,7 @@
+Try the type versus try the keyword — when each fits.
+
+It helps to separate the two things that share the word try. The try keyword — the control-flow form, with catch and finally — is for handling an exception right here, locally, and then proceeding. The try type, capital T, from notebook six — the data form — is for wrapping a result, chaining combinators over it, and returning it to someone else.
+
+A rough decision rule follows from that split. If the exception is something you want to handle right where it happens, use the try keyword. If it is something you want to return to the caller, so the caller decides what to do, use the try type, or either. If it comes from a java application programming interface at a boundary, wrap that call in the try type to convert the thrown exception into a value at the seam. And if you want to chain multiple operations, any of which may fail, use the try type, or either, or future, together with a for comprehension.
+
+So the keyword is about local, imperative handling at an edge, and the type is about turning failure into a value you can carry, compose, and hand onward. Most of your business logic wants the type; the keyword is reserved for the boundary where you must engage the exception machinery directly.

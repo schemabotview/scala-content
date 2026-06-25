@@ -1,0 +1,9 @@
+Failing fast versus returning errors as data.
+
+This is a design call you make at every layer of every system, and there is no universal answer — but there is a solid rule of thumb.
+
+At the edges — your main method, a hypertext-transfer-protocol handler, a command-line interface — exceptions that you cannot sensibly handle should propagate to the top and produce a clean error response. Failing fast there is fine, because the edge is exactly where an unhandleable error should turn into an exit code or an error page.
+
+In the middle — your business logic and library code — prefer either or try, so that callers can compose decisions about what to do. An exception thrown two layers down, carrying no type information, is much harder to handle gracefully than a typed error returned as a value. At java boundaries, wrap the call in the try type to convert the thrown exception into a value at the seam, and from that point on you are working in the data world rather than the exception world.
+
+When you are in doubt, lean toward returning errors as data. A library that returns an either of your error type and a result is easier to use and easier to evolve than one that throws — the error type is documented, exhaustively matched by the compiler, and stable across versions. That is the note this whole language track ends on: failures are easiest to handle when they are values, lifted into the type, where the compiler keeps you honest. From here, the natural next steps are applied — Spark in Scala, which reuses the case-class, pattern-matching, and type-class shapes you have learned, and the broader effect ecosystem if you want a deeper concurrency story than future provides.

@@ -1,0 +1,7 @@
+For-yield, and what it actually compiles to.
+
+Here is the key insight about for-yield — it is pure sugar. Anything you can write with for-yield can be written as a chain of flat-map, map, and with-filter calls, and the compiler does exactly that translation under the hood.
+
+The translation rules are simple. A single generator that yields an expression becomes a map. A generator with a guard becomes a with-filter followed by a map. And multiple generators become nested flat-maps, with the final one becoming a map. So a for-yield over one list, yielding each element squared, is just a map. Add a guard for even numbers, and it becomes a with-filter and then a map. Use two generators that pair every element of one list with every element of another, and it becomes a flat-map wrapping a map — which is exactly why the pairs come out in that nested order.
+
+The reason this matters beyond syntax is generality. Because for-yield is defined entirely in terms of map, flat-map, and with-filter, it works uniformly on any type that provides those three methods — not just collections, but also option, future, and try, and even your own types. That is why the same for-comprehension shape reappears in notebooks six and nine over completely different types. Learn it once on collections, and it transfers everywhere.

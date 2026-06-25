@@ -1,0 +1,7 @@
+The auto-closeable contract — what makes something using-compatible.
+
+Using works with anything that has an auto-closeable shape — that is, a close method returning unit. The standard library formalises this with a small type class that describes how to release a resource, and most resource-like java types — a file source, an input stream, a buffered writer, a database connection — already implement auto-closeable, so they work with using out of the box.
+
+If you write your own resource type, you simply give it a close method, and Scala's using machinery picks it up automatically through the default instance for auto-closeable. Picture a connection class that prints opening on construction, exposes a query method, and prints closing in its close method. Wrapping it in using, with a block that runs a query, prints opening, then the query result, then closing — in that order — and the connection is always closed at the end, even if the query had failed.
+
+Using also handles multiple resources. With the manager form, you acquire several resources in one scope — say two connections — and use them together. They are closed in reverse order of acquisition: last opened, first closed. That reverse ordering is exactly what you want when later resources depend on earlier ones, and it all happens automatically, so nested resources are released safely without any manual bookkeeping.

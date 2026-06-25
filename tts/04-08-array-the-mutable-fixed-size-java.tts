@@ -1,0 +1,7 @@
+Array — the mutable, fixed-size, java-flavoured one.
+
+An array is Scala's thin wrapper over a java array. It is mutable, fixed-size, and lives outside the immutable collections hierarchy. You use it when you need the exact memory layout a contiguous block of primitives gives you, or when you are talking to a java application programming interface that expects an array.
+
+Three things to register. First, indexing uses parentheses, not square brackets. Square brackets in Scala always mean type parameters, never indices, so the array applied to i gives you the element at position i. Second, arrays are mutable — a val binds the array, but the contents can still change in place. This is exactly the gap notebook two hinted at: val locks the binding, not the value it points at. You can overwrite an element of a val-bound array, you just cannot rebind the val to a different array. Third, arrays cannot grow — they have a fixed length. If you need a resizable indexed sequence, use a vector for the immutable case, or a mutable array-buffer for the mutable case.
+
+In practice you will see array in three places — low-level performance code, java interop, and Spark internals, because Spark stores partition data as primitive arrays for cache efficiency. There is also an updated method that returns a brand-new array with one position changed, when you want the immutable-style move instead of mutating in place.

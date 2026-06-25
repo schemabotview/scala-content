@@ -1,0 +1,11 @@
+Three places to write the type explicitly.
+
+Even though inference usually succeeds, there are three places where you should write the type by hand.
+
+The first is on public method signatures. A method's parameter and return types are its contract with the rest of the codebase. If you let the return type be inferred, a downstream change to the body can silently change the type that callers depend on. Always annotate the return type of a method other code calls.
+
+The second is when inference would pick something wider than you intended. A classic example is a list that mixes an integer, a decimal, and a string. The compiler infers a wide common type that is almost never what you wanted. Writing the type explicitly makes the intent visible — or, better, restructure the code so the list is not heterogeneous in the first place.
+
+The third is when the right-hand side is recursive, or mutually recursive. A recursive method needs a declared return type to break the inference cycle. Take a factorial defined in terms of itself — without the return type annotation, the compiler cannot infer it and reports that a recursive method needs a result type.
+
+So the pattern is: lean on inference for local values, and be deliberate at public signatures, heterogeneous collections, and recursion.

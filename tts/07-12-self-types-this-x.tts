@@ -1,0 +1,7 @@
+Self types — this requires an x.
+
+A self type declares that this trait requires any class mixing it in to also be an x. It is different from extending x — the trait does not actually inherit x's members for itself, it simply demands that whatever class mixes it in provides one.
+
+Picture a database trait with an abstract query method, and a user-service trait that declares a self type requiring a database. The user-service can then call query inside its own methods, even though it does not extend database — because the self type guarantees that any concrete class combining the two will supply a real database. A final app class extends both, implements query, and everything links up. The self type expressed the dependency without inheritance.
+
+The classic use is the cake pattern, where dependencies between modular components are wired together as self types. You will see it in older Scala codebases and in some library internals — in Spark, for example, the s-q-l context uses a self type to refer to the underlying spark context. So when you see a trait whose first line declares this-requires-some-other-type, read it as a stated dependency: this trait only makes sense when mixed into something that also provides that other type.

@@ -1,0 +1,7 @@
+Option combinators — map, flat-map, get-or-else, fold, and filter.
+
+The whole point of option is that you compose operations without unwrapping it by hand. The combinators automatically propagate none through a chain — if any step is empty, the whole result is empty.
+
+Map applies a function to the inner value if it is present, and stays none if it is absent. Flat-map is like map, but the function itself returns an option — which avoids ending up with an option nested inside an option. Get-or-else extracts the value, or falls back to a default if the option is empty. Fold combines those two ideas — you give it a default for the none case and a function for the some case, and it always produces a result. And filter keeps the value if it passes a predicate, and otherwise turns it into none.
+
+Picture chaining these. Mapping over some-of-a-name to uppercase it gives some of the uppercased name, while mapping over none stays none — the missing case carries through untouched. Flat-mapping through a lookup that itself returns an option keeps the result a single option rather than a nested one. Get-or-else turns an option into a plain value with a fallback, fold turns it into a message whether present or absent, and filter can empty out a value that fails a test. The unifying idea is that none flows through the entire chain automatically, so you write the happy path once and the empty case takes care of itself.

@@ -1,0 +1,7 @@
+The landscape in one breath.
+
+Scala ships two parallel collection hierarchies — one immutable, one mutable. They live in two different packages, scala collection immutable and scala collection mutable. The default import that comes with every Scala program points at the immutable side. So when you write list, vector, set, or map with no extra import, you get the immutable version automatically. The mutable versions require an explicit import.
+
+This is a deliberate language-design choice. Immutable is the easy path; mutable is opt-in. You have to ask for mutation by name, which keeps the safe default in front of you.
+
+There is also one collection that lives outside both hierarchies — the array. An array is a thin wrapper over the java virtual machine's primitive array type, and it is mutable. We will come back to it near the end of part one.

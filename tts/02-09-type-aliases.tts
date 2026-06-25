@@ -1,0 +1,9 @@
+Type aliases.
+
+A type declaration gives a name to an existing type. The important thing to understand is that it does not create a new type — the alias and the original are completely interchangeable everywhere.
+
+There are two reasons to use them. The first is readability. A repeated, complex type — say a map from string to a list of integer-decimal pairs — becomes one named thing you can read at a glance. The second is encoding intent. A user-i-d is conceptually different from a plain string, even when its representation is identical, and an alias signals that difference to a human reader.
+
+But be clear about the limit. Because an alias is transparent, the compiler will happily let you pass a plain string where a user-i-d alias is expected — at runtime they are literally the same type, and a comparison between them is true. The alias documents intent, but it does not enforce it.
+
+When you need real nominal separation, where the compiler actually refuses to let a plain string stand in for a user-i-d, reach for an opaque type or a value class. Notebook seven covers both.

@@ -1,0 +1,7 @@
+Conversions — a given conversion.
+
+A given conversion from a to b tells the compiler that an a may be silently converted to a b. This is the modern, scoped form of Scala 2's free-for-all implicit conversion definitions.
+
+The strong advice is to use it sparingly. Automatic conversions can hide intent and produce confusing error messages, because values change type without any visible call. They are most defensible at boundaries — converting a string to a path at an input-output boundary, or converting a domain primitive into its wrapping case class. To opt in at all, you must import the implicit-conversions language feature in any file that uses one, and that friction is intentional — it makes the use deliberate and visible.
+
+Picture a user-id case class wrapping a string, with a given conversion from string to user-id. A find-user method that expects a user-id will then accept a bare string literal, because the conversion wraps it automatically — and it equally accepts an explicitly constructed user-id. The convenience is real, but so is the risk that a conversion fires somewhere you did not intend. So reach for given conversions only at genuine boundaries, keep the import scoped to the files that need it, and prefer an explicit construction or an extension method whenever the conversion is not clearly pulling its weight.

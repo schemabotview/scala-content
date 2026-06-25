@@ -1,0 +1,7 @@
+Case class — the headline feature.
+
+A case class is a class with a pile of free behaviour the compiler generates for you. It is the dominant data-modelling shape across modern Scala, and you will see it everywhere — in Spark, in standard-library types, and in your own code.
+
+Adding the case keyword to a class gives you, for free, a long list of generated behaviour. The constructor parameters become val fields automatically. The companion gets an apply method, so you construct without new. It gets an unapply method, so pattern matching with the case syntax works. You get structural equals and hash-code, so two instances with the same field values are equal. You get a readable to-string that shows the field names, which is invaluable in logs and the read-eval-print loop. You get a copy method to derive a new instance with some fields changed. And instances are serializable by default, which matters for Spark, because case classes ship cleanly to executors.
+
+The practical upshot is everything you no longer write. You do not write new to construct one. You do not write val on its parameters. And you do not write equals, hash-code, or to-string by hand. Picture a transaction case class with four fields — two instances with the same field values compare equal, one with a different field does not, printing one shows its field names and values, and copy with a changed status hands back a new instance while leaving the original untouched. That is the whole appeal: declare the fields, and the boilerplate is gone.

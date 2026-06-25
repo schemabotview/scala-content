@@ -1,0 +1,11 @@
+Installing the toolchain with coursier.
+
+The recommended installer is coursier — a single tool that fetches a compatible java development kit, the Scala 3 compiler, the read-eval-print loop, the scala-cli runner, the build tool, and the formatter, all in one shot.
+
+On a mac the path is two commands. First you run brew install coursier, then you run c-s setup. Run them in your terminal, not in this notebook, because they touch your shell configuration files.
+
+The setup step does three things. It installs a java development kit if one is not already on your path, defaulting to a recent build called temurin. It drops launchers for scala, scala-cli, the build tool, and friends into a coursier-managed directory. And it adds that directory to your shell path by editing your shell configuration file.
+
+Open a fresh terminal after setup finishes, so the updated path takes effect. Then verify each piece responds. Run scala with the version flag and expect to see something starting with Scala code runner version three. Check the runner, the build tool, and finally java itself to see which development kit coursier picked.
+
+Two things to watch for. If java reports a version below seventeen, you need to upgrade — Scala 3 supports java eight and up, but Spark three point five and most of the modern ecosystem expect java seventeen or twenty-one. And if a command errors with command-not-found, the launcher directory is not on your path yet; open a fresh terminal, and if that does not help, source your shell configuration file explicitly.

@@ -1,0 +1,7 @@
+Intersection types — a and b.
+
+An intersection type, written with the ampersand operator between two types, is the type of values that are both an a and a b at the same time. It replaces the older with-keyword form in type position, and it is useful for combining the surfaces of two traits without having to name the combination as a separate type.
+
+Picture a named trait with a name, and an aged trait with an age. A describe function can take a parameter whose type is named-and-aged, meaning the value must satisfy both traits, and the body can then freely call both name and age on it. Any class that mixes in both traits qualifies, and you never had to declare a third trait that extends both just to express the requirement.
+
+So the value of an intersection type is that it lets you state, right at the parameter, exactly the combined capability you need — both of these traits, nothing more — and any value that happens to provide both is accepted. It is the precise, on-the-spot way to ask for the conjunction of two types.

@@ -1,0 +1,7 @@
+Zip and unzip — pairing two sequences.
+
+Zip pairs up corresponding elements from two collections. The result has the length of the shorter one, so if you zip a list of three names against a list of four ages, you get three pairs and the extra age is simply dropped.
+
+Unzip is the reverse. Given a collection of pairs, it hands back two collections — all the first elements in one, all the second elements in the other.
+
+And zip-with-index is a special, very common case — it is like zipping a collection against the natural numbers, so each element comes back paired with its position, starting from zero. That is exactly what you want whenever you need the index alongside the value but do not want to write a manual counter. Between them, these three cover the everyday need to walk two sequences in lockstep, to take a sequence of pairs apart, and to attach positions to elements.

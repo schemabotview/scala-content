@@ -1,0 +1,7 @@
+Conversions and interop.
+
+Any Scala collection can be converted to any other compatible shape with the to method, naming the target. To-list, to-vector, to-set, to-map — though to-map requires the elements to already be tuples, since a map is built from key-value pairs. Converting a list with a duplicate to a set drops the duplicate, converting to a vector or an array changes the underlying structure, and so on. The older named shortcuts still exist alongside the general form.
+
+For java interop, you cross the boundary explicitly. You import the scala j-d-k collection converters, and then call as-java to hand a Scala collection to java code, or as-scala to wrap a java collection coming back. Notebook one mentioned this seam; here it is in practice. The important point is that the conversion is explicit and visible — a java list is not silently a Scala list, and you mark the crossing with as-java or as-scala so the boundary is never a surprise.
+
+That closes the operations half. With the shapes from part one and these uniform operations, you have the whole everyday Scala collections toolkit — and the two habits to carry forward are derive rather than mutate, and reach for the right shape for your access pattern.

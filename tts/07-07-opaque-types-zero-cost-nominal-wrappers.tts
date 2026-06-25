@@ -1,0 +1,7 @@
+Opaque types — zero-cost nominal wrappers.
+
+Recall the two options from earlier notebooks. A type alias does not create a new type — it makes the alias and the underlying type completely interchangeable, so it documents intent but enforces nothing. A wrapper class does create a distinct type, but it allocates a wrapper object for every instance, which costs memory and indirection.
+
+Opaque types are Scala 3's middle ground. An opaque type is a genuinely new, distinct type at compile time — the compiler refuses to mix it with the underlying type — but at runtime it is exactly the underlying type, with no boxing and no overhead at all.
+
+The mechanism is scoping. You declare an opaque type inside an object. Inside that object, you can convert freely between the opaque type and its underlying representation, and you provide a constructor and any allowed operations there. Outside the object, the type is opaque — code cannot see through it to the underlying type. Picture an ids object defining a user-id and an account-id, both backed by string. Outside the object they are distinct types, so a function that expects a user-id accepts a user-id and rejects an account-id, even though both are strings underneath — the compiler enforces the separation. Yet at runtime each is just a string, with zero wrapper cost. That combination — real type safety at compile time, no runtime price — is what makes opaque types the right tool for domain types like ids, quantities, and units.

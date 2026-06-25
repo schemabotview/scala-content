@@ -1,0 +1,9 @@
+Currying and partial application.
+
+A curried function is one whose parameters live in separate single-element parameter lists. So instead of an add that takes a and b in one list, you write add of a in one list, of b in a second list. The two are not the same shape at the type level. The curried version has the type integer-arrow-integer-arrow-integer — a function that returns a function. The uncurried one is a single function of two arguments.
+
+Why anyone bothers is partial application. A curried function makes it natural. Applying add to five gives you back a function that adds five to whatever you pass next — without your having to write a lambda yourself.
+
+Scala gives you tools in both directions. The curried method on a function value returns its curried form, and an uncurried helper does the reverse. And the underscore in argument position is the manual, general way to partially apply any method or function — you fill in some arguments, leave an underscore for the others, and get back a function waiting for the rest.
+
+Picture a greet method that takes a greeting and a name. Apply it with hello and an underscore, and you get a function that always greets with hello and takes just a name. Apply it with an underscore and a fixed name, and you get a function that takes just the greeting. Each form fills one parameter and leaves the other free — that is partial application in everyday use.

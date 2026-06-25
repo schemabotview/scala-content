@@ -1,0 +1,9 @@
+Map, filter, and flat-map — the three you'll use every day.
+
+These three are the workhorses, and almost everything else is built on top of them.
+
+Map transforms each element with a function, and the shape is preserved — a list of seven transactions mapped over their amounts gives a list of seven amounts.
+
+Filter keeps the elements that satisfy a predicate, and again the shape is preserved — filtering the transactions to the approved ones gives back just those transactions. You chain the two together constantly — filter to the approved transactions, then map to their amounts, and you have a list of approved amounts in two readable steps.
+
+Flat-map is the one that needs a little more thought. It applies a function that itself returns a collection, and then flattens one level of nesting. It is the right tool when each input produces zero, one, or many outputs. Picture a few orders, each holding a list of line items. Mapping over the orders would give you a list of lists. Flat-mapping over them, returning each order's lines, gives you a single flat list of every line item in order. Whenever you would otherwise map and then flatten, flat-map does both in one step.

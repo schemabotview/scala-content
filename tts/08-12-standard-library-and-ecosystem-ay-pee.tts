@@ -1,0 +1,7 @@
+Standard library and ecosystem application programming interfaces that use this.
+
+Here is a short tour, so you recognise the pattern when you read other people's code.
+
+An ordering of a is passed implicitly to sorted, sort-by, min, and max. A numeric of a is passed implicitly to a generic sum or product. An execution context is required by every future combinator — you will see that in notebook nine. A class-tag of a is required when allocating a new array of a, because of the type erasure you met in notebook seven. Spark uses a type class called encoder to know how to serialize a value into its columnar in-memory format, and importing Spark's implicits brings the basic encoder instances into scope. And every modern Scala j-s-o-n library — circe, you-pickle, play-json — uses type classes for serialization, so that you declare a plain case class and obtain a j-s-o-n codec just by importing the derivation machinery.
+
+The unifying habit to build is this. When you see a method signature with a using parameter list — or, in Scala 2 code, an implicit parameter — the question to ask is: what is the contract this method is asking the compiler to fulfil? Once you can read the requested type as a capability the method needs, the whole implicit machinery stops looking like magic and starts looking like a dependency the compiler wires up for you.

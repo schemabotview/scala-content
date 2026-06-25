@@ -1,0 +1,7 @@
+For comprehensions over option, try, and either.
+
+For comprehensions are not just for collections. Any type with map, flat-map, and a with-filter for guards can be used in a for — and option, try, and either all qualify. For these types, a for comprehension becomes the cleanest way to chain operations that might short-circuit.
+
+The pattern is a sequence of generator lines, each pulling the success value out of its wrapper, followed by a yield. The crucial behaviour is short-circuiting — the first failure stops the chain, the remaining steps are skipped, and the whole expression evaluates to that failure.
+
+Picture an option chain that looks up a user, then that user's manager id, then the manager. If every step is present, you get some of the manager's name. But if any step is missing — the user does not exist, or has no manager — the whole comprehension yields none, with no special-casing on your part. The same shape works for either, where the rule is that the first left wins. A pipeline of steps, each returning an either, threads the right values through one after another, and the moment any step returns a left, the comprehension stops and returns that error. So the for comprehension reads as the straight-line happy path, while the short-circuit on the missing-or-failed case is handled for you by the type.

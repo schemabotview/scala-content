@@ -1,0 +1,9 @@
+Partition, span, and split-at — slicing.
+
+These three all cut a collection into two halves, but they differ in where the cut falls.
+
+Partition takes a predicate and splits the collection into two — the elements where the predicate is true, and the elements where it is false. It returns a tuple of the matching and the non-matching. Partitioning the numbers one through ten by even-ness gives you the evens in one half and the odds in the other.
+
+Span also takes a predicate, but it splits at the first element where the predicate becomes false. Everything before that point goes into the left half; everything from that point onward goes into the right. So spanning the numbers while they are less than five gives you the leading run of small numbers, and then the rest — including any later small numbers, because span stops at the first failure and does not look further.
+
+Split-at takes a position rather than a predicate. It splits at index n, so the first half is the first n elements and the second half is everything else. The distinction worth holding onto is that partition asks a yes-or-no question of every element, span stops at the first no, and split-at ignores the contents entirely and just cuts at a position.

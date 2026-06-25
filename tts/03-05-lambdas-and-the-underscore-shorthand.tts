@@ -1,0 +1,9 @@
+Lambdas and the underscore shorthand.
+
+A lambda is just a function value written inline at the call site. The several syntax variations all do the same thing — the rule is to use the shortest form that still reads clearly.
+
+There are three forms, increasing in compactness. The full form writes the parameter with its type, an arrow, and the body. The inferred form drops the parameter type, because map already knows what type it expects. And the underscore form drops the parameter name entirely, writing just underscore times two.
+
+The underscore shorthand is the most compact. Each underscore in the expression stands for a fresh parameter, taken positionally. So underscore plus underscore means a function of two parameters that adds them — the first underscore is the first parameter, the second underscore is the second.
+
+But the shorthand has a real limit. It only works when each parameter is used exactly once, and in the order it appears. The moment you need to reuse a parameter, or use them out of order, the underscore form becomes ambiguous and you must fall back to the named form, where you give the parameters explicit names and an arrow. Reach for underscore when it genuinely shortens the line, and name your parameters the moment clarity is at stake.

@@ -1,0 +1,7 @@
+Constructor patterns — destructuring case classes and enums.
+
+This is where pattern matching shines for data modelling. A constructor pattern matches a case class or enum case and extracts its fields by position. The shape is the constructor name followed by a pattern for each field — and nested patterns work all the way down.
+
+Picture a person case class whose address is itself a case class. You can match a person and, in the same pattern, reach into the nested address — binding the name, the age, and the city, while matching the country against a specific literal. One case handles people in a particular country; a second case, identical in shape but with the country as a variable instead of a literal, catches everyone else. The destructuring and the dispatch happen together, in one readable pattern.
+
+Two refinements make it cleaner. You can ignore fields you do not care about with an underscore, so a pattern can pull out just the name and discard the rest. And you can bind a whole sub-pattern with the at-sign — keeping a reference to the entire nested address while also pulling out the city separately. That combination of matching by shape, destructuring by position, and naming both the whole and its parts is what makes constructor patterns the everyday tool for working with modelled data.

@@ -1,0 +1,7 @@
+Blocking on a future.
+
+Awaiting the result of a future, with a timeout, blocks the calling thread until the future completes, and then returns the success value or rethrows the failure. There is a sibling that waits the same way but hands back the future itself rather than the value. Either way, the calling thread stops and waits.
+
+There are places where awaiting is acceptable. At the top of a main method, where the program would otherwise exit before the future completes. In tests, to assert on the result. And in the read-eval-print loop or a notebook, to actually see the value.
+
+But there are places where awaiting is a bug. In production server code that handles one request per thread, awaiting serialises what was supposed to be concurrent — you have thrown away the parallelism. And awaiting inside a future's own body is worse — at best you waste a thread, and at worst you deadlock the execution context, because the pool's threads are all stuck waiting on work that needs those same threads to make progress. The modern guidance is simply: do not await. Use for comprehensions and let the result flow forward, or write your application in a framework like cats effect, z-i-o, or akka that integrates concurrency from end to end. Await is the exception you allow at the very edge, not a tool for the middle of your code.

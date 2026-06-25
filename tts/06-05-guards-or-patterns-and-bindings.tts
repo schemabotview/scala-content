@@ -1,0 +1,9 @@
+Guards, or-patterns, and bindings.
+
+Three small features compose into clean cases.
+
+A guard adds a boolean condition to a case with the if keyword. The pattern must match and the condition must also hold for the case to fire. This lets you split one shape into several outcomes by value — for instance, matching an integer and then branching on whether it is negative, small, or large, all by attaching a different guard to the same variable pattern.
+
+An or-pattern, written with the pipe operator, matches any of several alternatives in one case. A vowel test, for example, is one case that matches any of the vowel characters and returns true, with a wildcard returning false. The one restriction is that an or-pattern's branches cannot bind names that differ between the alternatives, because the body would not know which one it got.
+
+An at-sign binding binds a name to the whole matched value while the pattern still destructures its parts. Picture matching an email, binding the whole message to one name while also pulling out the address field, and then adding a guard that checks the address. The body can then use both the entire email and the extracted address. Used together, guards, or-patterns, and at-sign bindings let a single case express a precise condition without losing access to either the whole value or its pieces.

@@ -1,0 +1,7 @@
+Vector — the default indexed sequence.
+
+A vector is internally a balanced thirty-two-way tree. From the outside it behaves like an array. From the inside, the tree is so shallow that indexed access at any position is effectively constant time, even for a very large vector. In practice you can treat vector access as constant time and not worry about it.
+
+Random access, appending, prepending, and the updated method are all effectively constant time. The operators have a small mnemonic — the colon always sits next to the collection. So vector-colon-plus-element is an append, because the colon is next to the vector, and element-plus-colon-vector is a prepend, by the same logic. And the updated method returns a new vector with one position changed, leaving the original untouched.
+
+Reach for vector when you need indexed access with a mix of prepend and append, or simply when you do not yet know what your access pattern will be. The rule of thumb is this — when in doubt between list and vector, pick vector. Pick list only when you specifically want cons-cell ergonomics for recursion or pattern matching.

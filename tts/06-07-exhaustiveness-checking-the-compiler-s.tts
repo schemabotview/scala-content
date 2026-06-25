@@ -1,0 +1,7 @@
+Exhaustiveness checking — the compiler's safety net.
+
+When you match on a sealed type — a sealed trait, a Scala 3 enum, or any other type the compiler can fully enumerate — the compiler checks that your match covers every case. If you miss one, you get a warning. In a Spark pipeline, that warning is your first line of defence against silently forgetting a status or a join type when a new one is added later.
+
+The check only fires on closed types. It does not trigger when you match on an integer, on any, or on an unsealed type, because the compiler cannot know what values might appear. That is the practical reason to make your domain types sealed — define them as the cases of an enum, or as case classes extending a sealed trait — so that you get exhaustiveness checking for free.
+
+Picture a status enum with three cases and a function that labels each one. As long as the match handles all three, the compiler is satisfied. The moment you remove one of the cases, the compiler warns that the match may not be exhaustive and even tells you which case is unhandled. That warning turns a whole class of runtime bug — the forgotten case — into something you fix at compile time.

@@ -1,0 +1,7 @@
+Picking a shape — the cheat sheet.
+
+Here is the whole first half in one decision list.
+
+If you want to build front-to-back and walk recursively or pattern-match, reach for list. If you want indexed access with a mix of prepend and append, reach for vector — and vector is also the default when you are in doubt. For membership testing or deduplication, reach for set. For key-to-value lookup, reach for map. For java interop or contiguous primitives, reach for array. For a mutable, resizable buffer, reach for a mutable array-buffer. For two or three values bundled together briefly, use a tuple. And for named fields on a small record, jump ahead to the case classes in notebook five.
+
+The single most useful line to remember is the default. When you cannot decide, pick vector — it is fast at almost everything and rarely the wrong call. Everything else on this list is a reason to deviate from that default for a specific access pattern.

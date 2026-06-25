@@ -1,0 +1,9 @@
+Scala 3, not Scala 2.
+
+This track teaches Scala 3 — the version line that landed in 2021, after a long incubation under the codename dotty. Scala 3 is a deep redesign. Same java virtual machine target, same flavour, but a cleaner type system, fewer footguns, and a much friendlier surface syntax.
+
+Here are the changes you will feel immediately. Significant indentation means code blocks can be expressed with indentation, the way python does, instead of curly braces — braces still work, you just pick one style per file. The keywords given and using replace the old keyword implicit, rebuilding Scala 2's most powerful and most confusing feature with clearer names; you will meet these in notebook eight. The enum keyword is now first-class, so algebraic data types, which in Scala 2 needed a sealed trait plus a handful of case classes, have a one-keyword form. Extension methods let you add methods to types you don't own without the old implicit-class trick. And top-level definitions let you declare a def or a val at the top of a file, with no enclosing object required.
+
+Here is how to read older code. If you stumble onto an answer online using implicit val foo, or object main extends app, that is Scala 2 vintage. The shape of the idea usually carries over; only the keyword differs.
+
+One practical note about compatibility. Scala 3 is binary-compatible with Scala 2 point 13 libraries at the bytecode level, so you can depend on a Scala 2 point 13 library from a Scala 3 project. The reverse does not work. Spark is the big exception you will care about — as of 2026, Spark still targets Scala 2 point 13, so when this track bridges to Spark you will be reading Scala 2 source code.

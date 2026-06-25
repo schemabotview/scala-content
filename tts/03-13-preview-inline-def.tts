@@ -1,0 +1,7 @@
+Preview — inline def.
+
+Scala 3 adds an inline keyword that turns a method into a compile-time construct. Instead of generating a real method call, the compiler substitutes the body directly at the call site.
+
+You will rarely need this in everyday code. It is mostly relevant for library authors writing performance-critical code, or computation that should happen at compile time. It is mentioned here only so the keyword does not surprise you when you encounter it, and notebook seven will use it briefly in the context of opaque types.
+
+The idea in one picture. An inline square method, applied to ten, does not become a method call at runtime. At compile time, that call site is rewritten to ten times ten directly. The work of the call disappears, folded into the place that used it.

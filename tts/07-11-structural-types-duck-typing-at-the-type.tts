@@ -1,0 +1,7 @@
+Structural types — duck typing at the type level.
+
+A structural type describes the shape of an object — what methods it must have — without naming a class or a trait. The compiler then accepts any value that has that shape, regardless of its declared type. It is duck typing, but checked at compile time.
+
+Picture a close-it function whose parameter is described structurally as anything with a close method returning unit. The body just calls close. Any value that happens to have a matching close method is accepted, even if it implements no common interface.
+
+The important caveat is the cost. In Scala 3, structural types require a special import or the select-dynamic mechanism, and they use reflection at the call site, which is slow. So use them sparingly. The section exists mostly so the syntax does not surprise you when you read it. In almost every case, the better tool is a trait with an extension method, or a type class — both of which give you the same flexibility with full static dispatch and no reflection. Reach for those first, and treat structural types as the rare exception.

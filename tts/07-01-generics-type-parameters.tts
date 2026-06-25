@@ -1,0 +1,7 @@
+Generics — type parameters.
+
+A generic method, class, or trait declares one or more type parameters in square brackets, and then uses those parameters in its signatures. The compiler instantiates the parameters at each call site — once with integer, once with string, once with whatever you pass — without your writing a separate version per type.
+
+Picture an identity method, generic over a type a, that takes an a and returns it. Calling it with a number infers a as integer; calling it with a string infers a as string; calling it with a list infers a as that list type. The same idea scales up to classes and traits — a box class generic over a holds a value of type a, and a container trait generic over a has a get method returning a. One definition, every element type.
+
+The naming convention is just single capital letters chosen for readability — a for a single payload, k and v for map keys and values, t from the java tradition, r for a return type when you need to distinguish it. The compiler does not care what you call them; the names are purely for the reader. The whole point of generics is to write a piece of logic once, in terms of an unknown type, and let the compiler specialise it safely for every concrete type you actually use.

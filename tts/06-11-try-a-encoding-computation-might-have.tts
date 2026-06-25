@@ -1,0 +1,7 @@
+Try — encoding that a computation might have failed.
+
+Try of a is a sealed algebraic data type for the result of a computation that might throw. Success carries a value and means the computation completed normally. Failure carries a throwable and means it threw — here is the exception.
+
+You produce a try by wrapping an expression in a try block. If the block throws, you get a failure holding the thrown exception; otherwise you get a success holding the returned value. The effect is to convert exception-based code into value-based code that composes the same way option does. So a parse-int helper that wraps a string-to-integer conversion gives a success for a valid number and a failure carrying a number-format exception for an invalid one — no exception escapes, it becomes a value.
+
+You reach for try, rather than plain try-catch, when you want to return the failure as data, chain computations together, or store and log the exception without immediately handling it. Its combinators mirror option's. Map transforms a success and carries a failure through untouched. Recover converts a failure into a success with a fallback, by matching on the exception type. Recover-with is the same idea but its handler returns another try. And to-option drops the exception detail, turning a success into some and a failure into none, when you no longer care why it failed.

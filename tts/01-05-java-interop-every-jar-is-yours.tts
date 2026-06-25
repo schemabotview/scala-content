@@ -1,0 +1,15 @@
+Java interop — every jar is yours.
+
+Because Scala compiles to java virtual machine bytecode that looks indistinguishable from java's, any java library is automatically a Scala library. There is no foreign function interface, no binding layer, no wrappers needed.
+
+In practice this means the entire java standard library is in scope — java time local date, java util u-u-i-d, java n-i-o file path — all callable from Scala with the same method signatures. Every artifact on maven central, the java virtual machine's package registry, is one line in your build file away from being a dependency. A Scala class can extend a java class, and a java class can extend a Scala class — same extends keyword, same single-inheritance rules.
+
+There are three friction points, in order of how often you will trip over them.
+
+The first is null. Java application programming interfaces return null to signal absence; Scala uses option instead. Wrap a java return in option at the boundary to stop nulls from leaking into your Scala code. Notebook six covers this.
+
+The second is checked exceptions. Java has them; Scala does not. You catch them in Scala using the same try and catch, but the compiler will not force you to.
+
+The third is collection conversions. A java util list is not a scala list. Import the scala j-d-k collection converters and call as-scala or as-java to convert at the seam.
+
+You will see all three of these in the Spark code you read later. Spark's java application programming interface layer is the canonical example of working across this boundary.

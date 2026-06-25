@@ -1,0 +1,7 @@
+Summon and explicit context lookup.
+
+Summon, applied to a type, returns the given instance of that type from scope. It is useful inside a method body when you want to use a given instance directly, without having named it as a using parameter.
+
+It is essentially the modern shorthand for the older lookup helper from Scala 2, and it composes cleanly with type-class designs. Picture a show-it method, generic over a, with a context bound on show. Inside, it summons the show instance for a and calls show on the value. The context bound declares that a show instance must be available, and summon is how the body reaches for it when it has no named parameter to use.
+
+So the relationship is simple. A using parameter gives you the instance by name. A context bound says an instance must exist but does not name it. And summon is the way you fetch that unnamed instance inside the body when you actually need to call methods on it. It is a small tool, but it is the glue that lets the abbreviated, context-bound style still get its hands on the instance.

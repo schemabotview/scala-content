@@ -1,0 +1,7 @@
+While — the one statement-only construct.
+
+The while loop, and its sibling the do-while loop, is the exception that proves the rule. It always evaluates to unit. There is nothing useful to return from a loop whose only purpose is to iterate by side effect, so its value is just the empty parentheses, the sole unit value.
+
+Idiomatic Scala uses while sparingly — mostly in tight numeric loops, where the alternative would carry measurable overhead. For everything else, reach for an expression-based form instead.
+
+Picture a small counting loop that prints three lines using a var and a while. The same thing, expression-style, is a range followed by for-each, with no var and no while — and if you actually wanted a value out of it, you would map over the range and get back a sequence, with no mutation at all. The higher-level alternatives — map, filter, fold, and recursion — are the subject of notebook four. The key insight is that reaching for while should be the rare, deliberate exception, not the default.

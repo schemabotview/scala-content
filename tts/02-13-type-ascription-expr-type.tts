@@ -1,0 +1,7 @@
+Type ascription — expression, colon, type.
+
+A type ascription tells the compiler to treat this expression as this type. It does not change the runtime value. What it changes is how the compiler treats the value for subsequent inference.
+
+There are three honest uses. The first is forcing widening. A list of whole numbers is inferred as list of integer, but if you ascribe it as list of any, the binding gets the wider type, even though the runtime value is identical. The second is disambiguating overloaded methods — when two overloads differ only by argument type, ascribing the argument picks one. The third is signalling intent on a return. Inside a long block, an ascription on the final expression documents the type the block is expected to produce, and the compiler will enforce it.
+
+The crucial thing to understand is that an ascription is not a cast. It only succeeds when the expression is already a subtype of the ascribed type. Widening a string to any works, because every string is an any. But ascribing a string as an integer is rejected at compile time, because a string is not an integer. An ascription can only tell the truth about a type the value already has — it cannot reinterpret one type as an unrelated one.

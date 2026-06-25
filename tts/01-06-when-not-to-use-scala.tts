@@ -1,0 +1,11 @@
+When not to use Scala.
+
+It is worth being honest about three cases where reaching for Scala is the wrong call.
+
+First, when you need fast cold-start command-line tools, or amazon web services lambda functions. Java virtual machine startup latency dominates short-lived processes. Go, rust, or even a python script will give your users a faster command-line tool with less effort. Graal v-m native image is an escape hatch, but it adds real build complexity.
+
+Second, when the team's centre of gravity is python or java. Scala has a real learning curve — implicits, variance, the type system, two competing functional ecosystems called typelevel and zio. If nobody on the team will mentor newcomers through it, you will pay a maintenance cost for years.
+
+Third, when you only need a one-off scripted extract-transform-load job. A python script with pandas or duck-d-b is faster to write, easier to share, and runs everywhere.
+
+Here is the honest rule. Scala pays for itself when you would otherwise be writing a lot of java, or when type-safe domain modeling is the hard part. For everything else, the simpler tool usually wins.

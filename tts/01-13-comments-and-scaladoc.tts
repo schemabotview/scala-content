@@ -1,0 +1,7 @@
+Comments and scaladoc.
+
+Scala uses the same comment conventions as java and c, with one addition called scaladoc. A single-line comment starts with two forward slashes. A multi-line block comment is wrapped between slash-star and star-slash. And a scaladoc comment starts with slash-star-star and is used to document public application programming interfaces. Tools then turn these into hypertext reference docs.
+
+A few scaladoc tags are worth knowing — at-param documents a parameter, at-return documents the return value, at-throws documents a thrown exception, at-see adds a cross-reference, and at-example gives an inline example.
+
+Here is the nice part. The official Scala 3 standard library documentation site is itself scaladoc output. That is exactly the shape you are producing when you write scaladoc on your own code.

@@ -1,0 +1,7 @@
+Tuple, list, and sequence patterns.
+
+Tuples, lists, and other sequences have built-in pattern syntax, and it is worth knowing the handful of shapes.
+
+A tuple pattern matches a tuple and binds both halves at once. An empty-list pattern matches the empty list. A one-element pattern matches a list of exactly one. The head-cons-tail pattern matches a non-empty list and splits off the first element from the rest. And the sequence-wildcard pattern matches a list with at least so many leading elements and binds the remainder as a sequence with a trailing star.
+
+Two everyday uses show why this matters. First, a tuple pattern in val position destructures a pair in a single line, without reaching for positional accessors. Second, the head-cons-tail pattern is the backbone of functional recursion over a list. Picture a sum function that matches the empty list to zero, and otherwise matches head-cons-tail and returns the head plus the sum of the tail. That recursive shape — base case for empty, recursive case that peels off the head — is the canonical way to process a list in Scala, and the same idea extends to matching the first two elements and a rest, or any fixed prefix followed by the remainder.

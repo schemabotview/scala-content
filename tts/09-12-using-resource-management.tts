@@ -1,0 +1,7 @@
+Using — resource management.
+
+Scala 2 point 13 added a using construct for the open-it, use-it, close-it pattern — open a resource, work with it, and close it whether or not anything blows up. It is the Scala equivalent of java's try-with-resources and python's with statement.
+
+The shape is using, given a resource expression and a block that works with the resource. It runs your block, and then always closes the resource afterward, even if the block threw, and it wraps the whole result in a try so any failure becomes a value. Picture reading a file — using opens the file source, your block reads the lines, and the file is closed automatically the moment the block finishes, success or failure. The result comes back as a success holding the lines, or a failure holding whatever went wrong.
+
+There are two related forms. The plain using returns a try of the result, capturing failures from both the body and the close. And using-dot-resource runs the body and lets exceptions propagate normally, which you choose when you would rather have the raw exception than the try wrapper. Either way, the value of the construct is that you can never forget to close the resource — the close is guaranteed by the construct itself, not by your remembering to write it in a finally block.

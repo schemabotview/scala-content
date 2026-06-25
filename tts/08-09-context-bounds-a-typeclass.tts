@@ -1,0 +1,7 @@
+Context bounds — the type-class shorthand.
+
+When a generic method needs an instance of a type class, the literal way to write it is with an explicit using parameter — for example, a max-of method generic over a, taking a list of a and a using ordering of a. That works, but it is verbose, and the using parameter is often only there to be summoned later.
+
+Scala lets you abbreviate it with a context bound. Instead of spelling out the using parameter, you write the type parameter as a, colon, ordering. That colon-ordering is exactly sugar for there is a using ordering of a parameter on this method. Inside the body, you retrieve the instance by summoning it. This context-bound form is what you will see in most Scala 3 library code, precisely because it is so much tighter than the explicit version while meaning the same thing.
+
+Multiple context bounds compose, too. A method generic over a with bounds on both show and ordering is asking for both instances at once — so it can sort a list using the ordering and then render the result using show, all from the two bounds. So read a context bound as a compact requirement: the type parameter must have an instance of each named type class available, and the body reaches for them with summon. It is the everyday shorthand for the type-class pattern.

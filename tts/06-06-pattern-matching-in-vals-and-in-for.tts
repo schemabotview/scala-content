@@ -1,0 +1,7 @@
+Pattern matching in vals and in for-comprehensions.
+
+Patterns work outside a match expression too. Wherever the compiler can statically guarantee the pattern matches, you can use it on the left side of a val declaration, or as the binder in a for comprehension.
+
+Destructuring a tuple in val position is always safe, because the shape is known — binding three names from a three-element tuple in one line, for instance. Destructuring a case class in val position is safe when its shape is known. The caution is for patterns that might fail. If you destructure a two-element list from a list that might not have exactly two elements, the assignment will throw a match error at runtime. So reserve val-position patterns for tuples and case classes, where the shape is guaranteed, and not for lists of unknown length.
+
+The most common use of a pattern in a for comprehension is iterating over a map. Because each entry comes out as a key-value tuple, you can put a tuple pattern directly in the generator — binding the name and the value separately on each iteration. That is far cleaner than pulling the pieces out of a tuple by hand inside the loop body, and it is why for-comprehensions over maps read so naturally.

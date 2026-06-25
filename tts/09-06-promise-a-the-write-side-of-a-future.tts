@@ -1,0 +1,7 @@
+Promise — the write side of a future.
+
+A promise of a is the bridge between a future and a code path that completes it from the outside. The promise hands you a future to give to callers. Internally, your own code calls success with a value, or failure with a throwable — exactly once — when the result is ready. So where a future is the read side, the placeholder you observe, a promise is the write side, the handle you fulfil.
+
+Most everyday code does not need a promise. You reach for one when you are integrating with a callback-based application programming interface — something that calls you back when its work is done, and you need to expose that as a future to your downstream code, which would much rather see a future than a callback.
+
+Picture an old-style fetch that takes an id and a callback, and on a background thread eventually calls that callback with either an error or a result. To wrap it as a future, you create a promise, call the old-style fetch, and in its callback complete the promise — success on the result, failure on the error — and then hand back the promise's future. Downstream code now sees a perfectly ordinary future and can map, recover, and for-comprehend over it, with no idea a callback ever existed. That is the role of promise: it is the adapter that lets the messy, callback-shaped outside world feed into the clean, future-shaped world your code prefers.

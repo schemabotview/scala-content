@@ -1,0 +1,7 @@
+Partial functions — case blocks as a first-class value.
+
+A partial function is a function that may not be defined for all of its inputs. Scala lets you write one inline with a block of cases — exactly the shape of a match expression's case list, but standalone and treated as a value you can pass around.
+
+A partial function has two methods of note. Apply calls it, and throws a match error if no case matches the input. Is-defined-at checks whether any case would match, without actually calling it. That second method is the whole point — a partial function can be asked, in advance, whether it knows how to handle a given value.
+
+This is exactly what the collect method from notebook four takes. Picture a partial function that divides one hundred by its input, defined only for non-zero numbers via a guard. Asked whether it is defined at five, it says yes; at zero, no. Handed to collect over a list that includes some zeros, it simply skips the zeros and transforms the rest — because collect uses is-defined-at to filter before it applies. Partial functions also combine: an or-else method joins one that handles the even numbers with one that handles the odd numbers into a single function that covers them all. That combination of being askable and being composable is what makes them more than just an inline match.

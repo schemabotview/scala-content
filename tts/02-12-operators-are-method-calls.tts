@@ -1,0 +1,9 @@
+Operators are method calls.
+
+There are no operator declarations in Scala. What looks like an operator — plus, minus, star, less-than, double-equals, even the cons operator that prepends to a list, and the operator that concatenates two lists — is really a method call, written in a special syntactic position.
+
+The rule is simple. If a method takes one argument, you can call it without the dot and the parentheses. So one plus two is exactly one dot plus, applied to two. And concatenating two lists with the double-plus operator is exactly the first list dot double-plus, applied to the second.
+
+This is why Scala lets you define methods with symbolic names. A class can declare a method literally named plus, taking another instance and returning a new one, and then the call site uses it as if it were a built-in operator. Picture a small money type with a plus method that adds two amounts and returns a new money. Writing a plus b reads like ordinary arithmetic, but it is calling the method you defined. Notebook five uses exactly this to add operators to domain types.
+
+One more nice consequence. Equality with double-equals is also a method, and for the standard collections it is structural — two lists are equal when their elements are equal, not when they are the same object in memory.

@@ -1,0 +1,11 @@
+On-ramp three — the build tool.
+
+For a real project, the build tool — s-b-t, short for simple build tool — gives you a directory layout, dependency management, incremental compilation, and a test runner. You will meet it properly when this track bridges to Spark; for now, the scaffold and the layout are enough.
+
+You generate a fresh project from the official Scala 3 template. The build tool downloads the template, asks for a project name, and creates a directory with the standard layout.
+
+That layout reads as follows. At the top is the build file, which holds the project configuration. A project directory pins the build-tool version. The source directory, called s-r-c, contains main slash scala for production code and test slash scala for tests. And a target directory holds compiled output and cache, which you tell git to ignore.
+
+A minimal build file configures the Scala version, the project version, the project name, and any library dependencies. Three shapes are worth noting now. The colon-equals operator means set this setting to this value. The plus-plus-equals operator means append to this collection setting. And the two-percent-signs operator is Scala-aware dependency notation — it appends the Scala binary version to the artifact name automatically, so the same line works whether you are on Scala 3 point 4 or three point 5.
+
+You run the project with the build tool's run command, or you open its interactive shell and issue commands one at a time — compile, run, test, or a watch mode that recompiles and re-tests on every save.

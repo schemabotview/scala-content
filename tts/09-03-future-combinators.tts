@@ -1,0 +1,7 @@
+Future combinators.
+
+The combinators on future mirror those on option, try, and either from notebook six. The pattern is the same — wrap an effect that might succeed or fail, and chain operations that automatically propagate failure through the chain.
+
+Map applies a function to the successful value, in the future's context. Flat-map is like map, but the function itself returns a future, so it sequences one asynchronous step after another without nesting. Filter keeps the value if a predicate holds and otherwise fails the future. Recover catches a failure by matching on the exception and turning it into a successful value. Recover-with is the same idea, but its handler returns another future. Fallback-to substitutes a second future if the first one failed. Transform gives a uniform way to map both the success and failure cases at once. And on-complete fires a side-effecting callback when the future finishes — the lowest-level escape hatch.
+
+Picture a lookup that returns a future of a user string, failing on a bad id. Mapping over it uppercases the eventual result. Recovering from a failure replaces it with a fallback string, so a future that would have failed now succeeds. And fallback-to swaps in the result of a second lookup when the first fails. The thing to notice is that these read like ordinary value transformations, even though each one is scheduled to run only once the future completes — and any failure flows straight through unless you explicitly recover from it.

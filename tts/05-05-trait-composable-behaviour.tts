@@ -1,0 +1,7 @@
+Trait — composable behaviour.
+
+A trait is Scala's primary tool for sharing behaviour between unrelated types. Think of it as java's interface, plus default methods, plus fields, plus state — but with one capability java lacks: you can mix multiple traits into a single class.
+
+The shape is a trait that declares some abstract members, which subclasses must define, and some concrete members, which are inherited automatically. You mix a trait in with extends for the first one and with for each additional one. In Scala 3 you can also list them separated by commas, and the two forms are equivalent.
+
+Picture a named trait with an abstract name and a concrete greet method that uses it, and an aged trait with an abstract age and a concrete is-adult method. A person class that takes a name and an age can extend both, and immediately gets greet and is-adult for free through inheritance, even though named and aged know nothing about each other. Traits can also carry state — a counted trait with a private counter and a tick method that increments it can be mixed into any class that wants counting behaviour. That ability to compose several independent slices of behaviour into one class is what makes traits the workhorse of object-oriented Scala.

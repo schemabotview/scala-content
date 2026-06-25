@@ -1,0 +1,15 @@
+How Spark uses Scala — what to expect when you read its source.
+
+Apache Spark itself is written in Scala. When you eventually crack open the Spark source, there are five shapes you will see over and over. None of them will be a surprise by the end of this track.
+
+You will see a case class used as the in-memory representation of one record. That is an immutable data record with an auto-generated equals, hash code, to-string, and pattern-matching support. Notebook five covers case classes.
+
+You will see a dataframe filter passed a short lambda that checks one field — a function passed where a function of one argument is expected. Functions as values. That is notebook three.
+
+You will see a sealed trait followed by a handful of case objects extending it — say, an inner join, a left outer join, and so on. That is an algebraic data type, a closed set of subtypes the compiler can check exhaustively in a match expression. Notebooks five and six.
+
+You will see an implicit value of some encoder type — that is a type-class instance. The Scala 2 syntax uses the implicit keyword; Scala 3 uses given. Same idea, cleaner keyword. Notebook eight.
+
+And you will see a future wrapping an expensive computation, then chained with map — an asynchronous result composed without blocking. Notebook nine.
+
+One last thing. Spark still uses brace syntax and Scala 2 point 13 throughout. The constructs are identical; only the surface syntax differs. You will not be reading unfamiliar territory — you will be reading the same language, with curly braces and an older keyword for given.

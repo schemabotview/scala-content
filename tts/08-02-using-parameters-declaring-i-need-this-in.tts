@@ -1,0 +1,7 @@
+Using parameters — declaring I need this in context.
+
+A using parameter list is a regular parameter list with one change in responsibility — the compiler is responsible for finding the argument, not the caller.
+
+The shape is that a method declares a parameter list with the using keyword. At the call site, you call the method with only its ordinary arguments, and you do not pass the using list at all. The compiler looks for a value of the required type in scope and inserts it for you. If it cannot find one, you get a clear compile-time error saying no given instance of that type was found — so a missing context is caught at compile time, not at runtime.
+
+Using parameters can be anonymous, with no name, when you do not need to refer to them by name in the body — and most of the time you do not. Picture a max-of method that takes two values and an anonymous using parameter of the right ordering type; the body just reaches for that ordering to compare them, and callers never see the second list. When the body does need to call methods on the context directly, you give the using parameter a name and use it like any other parameter. Either way, the caller's code stays clean, and the requirement lives in the signature where the compiler can enforce it.

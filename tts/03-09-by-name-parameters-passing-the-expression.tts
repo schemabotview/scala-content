@@ -1,0 +1,11 @@
+By-name parameters — passing the expression, not its value.
+
+By default, when you call a method with an expression as an argument, Scala evaluates that expression first and passes the value in. The value goes in, not the expression.
+
+A by-name parameter flips that. It is declared with an arrow and no parameter list to its left, and it passes the unevaluated expression. Each time the method body references that parameter, the expression is re-evaluated.
+
+There are two real uses. The first is building control-flow application programming interfaces — your own if, your own unless, your own retry loop. The body of such a construct must not run until the right moment, and a by-name parameter gives you exactly that deferral. The second is computing something only if it is needed. A logging method's expensive message string should only be built if the log level is actually enabled. With a by-name message, you can pass the expensive expression and have it built only inside the conditional that decides whether to log.
+
+Picture two logging methods. One takes an ordinary message, so the expensive work runs before the call even though the message may be discarded. The other takes a by-name message, so the expensive work runs only when the conditional inside actually fires — and if the level is off, it never runs at all. And a retry construct takes a count in one list and a by-name body in a second list, so you can use it like a built-in keyword, with a block of code that it re-runs on failure.
+
+The caution is to not reach for by-name in everyday code. It introduces lazy evaluation where callers do not expect it, and re-evaluating the same expression on every reference can be surprisingly expensive.
