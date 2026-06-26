@@ -11,6 +11,11 @@
       "id": "scala-anatomy",
       "title": "Scala — Anatomy",
       "status": "built"
+    },
+    {
+      "id": "scala-grammar",
+      "title": "Scala — by Example",
+      "status": "built"
     }
   ],
   "presentations": [
@@ -203,167 +208,162 @@
       "id": "02-values-types-expressions",
       "title": "Values, Types & Expressions",
       "notebook": "notebooks/02-values-types-and-expressions.ipynb",
-      "defaultScene": "scala-anatomy",
+      "defaultScene": "scala-grammar",
       "sections": [
         {
           "heading": "`val` versus `var`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "role": "hook",
           "highlight": [
-            "sa-bind-val",
-            "sa-bind-var"
+            "sg-vt-val"
           ],
           "focus": [
-            "sa-kind"
+            "sg-vt"
           ],
           "audio": "audio/02-01-val-versus-var.wav"
         },
         {
           "heading": "`lazy val` — computed at most once, on first read",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-bind-lazy"
+            "sg-vt-val"
           ],
           "focus": [
-            "sa-kind"
+            "sg-vt"
           ],
           "audio": "audio/02-02-lazy-val-computed-at-most-once-on-first.wav"
         },
         {
           "heading": "The type hierarchy",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-type",
-            "sa-primitive"
+            "sg-vt-types"
           ],
           "focus": [
-            "sa-type"
+            "sg-vt"
           ],
           "audio": "audio/02-03-the-type-hierarchy.wav"
         },
         {
           "heading": "Type inference — what the compiler does for free",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-name",
-            "sa-type"
+            "sg-vt-types"
           ],
           "focus": [
-            "sa-init-row"
+            "sg-vt"
           ],
           "audio": "audio/02-04-type-inference-what-the-compiler-does-for.wav"
         },
         {
           "heading": "Three places to write the type explicitly",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type"
+            "sg-vt-types"
           ],
           "focus": [
-            "sa-type"
+            "sg-vt"
           ],
           "audio": "audio/02-05-three-places-to-write-the-type-explicitly.wav"
         },
         {
           "heading": "The numeric types",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-primitive"
+            "sg-vt-types"
           ],
           "focus": [
-            "sa-type"
+            "sg-vt"
           ],
           "audio": "audio/02-06-the-numeric-types.wav"
         },
         {
           "heading": "`String` and the built-in interpolators",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-value-primitive",
-            "sa-primitive"
+            "sg-vt-str"
           ],
           "focus": [
-            "sa-value"
+            "sg-vt"
           ],
           "audio": "audio/02-07-string-and-the-built-in-interpolators.wav"
         },
         {
           "heading": "`Boolean`, `Char`, `Unit`, `Null`, `Nothing`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-primitive"
+            "sg-vt-types"
           ],
           "focus": [
-            "sa-type"
+            "sg-vt"
           ],
           "audio": "audio/02-08-boolean-char-unit-null-nothing.wav"
         },
         {
           "heading": "Type aliases",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type"
+            "sg-vt-types"
           ],
           "focus": [
-            "sa-type"
+            "sg-vt"
           ],
           "audio": "audio/02-09-type-aliases.wav"
         },
         {
           "heading": "The big shift — almost everything is an expression",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-ctrl-expr",
-            "sa-control"
+            "sg-vt-expr"
           ],
           "focus": [
-            "sa-verbs"
+            "sg-vt"
           ],
           "audio": "audio/02-10-the-big-shift-almost-everything-is-an.wav"
         },
         {
           "heading": "`while` — the one statement-only construct",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-loop-while"
+            "sg-vt-expr"
           ],
           "focus": [
-            "sa-loops"
+            "sg-vt"
           ],
           "audio": "audio/02-11-while-the-one-statement-only-construct.wav"
         },
         {
           "heading": "Operators are method calls",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-method-call"
+            "sg-vt-expr"
           ],
           "focus": [
-            "sa-methods"
+            "sg-vt"
           ],
           "audio": "audio/02-12-operators-are-method-calls.wav"
         },
         {
           "heading": "Type ascription — `expr: Type`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type"
+            "sg-vt-types"
           ],
           "focus": [
-            "sa-init-row"
+            "sg-vt"
           ],
           "audio": "audio/02-13-type-ascription-expr-type.wav"
         }
@@ -373,167 +373,163 @@
       "id": "03-functions-methods",
       "title": "Functions & Methods",
       "notebook": "notebooks/03-functions-and-methods.ipynb",
-      "defaultScene": "scala-anatomy",
+      "defaultScene": "scala-grammar",
       "sections": [
         {
           "heading": "`def` — the method form",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "role": "hook",
           "highlight": [
-            "sa-bind-def",
-            "sa-method-def"
+            "sg-fn-def"
           ],
           "focus": [
-            "sa-methods"
+            "sg-fn"
           ],
           "audio": "audio/03-01-def-the-method-form.wav"
         },
         {
           "heading": "The function-value form — `(x: Int) => x + 1`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-fn-lambda"
+            "sg-fn-lambda"
           ],
           "focus": [
-            "sa-functions"
+            "sg-fn"
           ],
           "audio": "audio/03-02-the-function-value-form-x-int-x-1.wav"
         },
         {
           "heading": "Methods versus function values — the gap and the bridge",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-method-def",
-            "sa-fn-lambda"
+            "sg-fn-def",
+            "sg-fn-lambda"
           ],
           "focus": [
-            "sa-methods",
-            "sa-functions"
+            "sg-fn"
           ],
           "audio": "audio/03-03-methods-versus-function-values-the-gap.wav"
         },
         {
           "heading": "Higher-order functions",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-fn-hof"
+            "sg-fn-hof"
           ],
           "focus": [
-            "sa-functions"
+            "sg-fn"
           ],
           "audio": "audio/03-04-higher-order-functions.wav"
         },
         {
           "heading": "Lambdas and the underscore shorthand",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-fn-lambda"
+            "sg-fn-lambda"
           ],
           "focus": [
-            "sa-functions"
+            "sg-fn"
           ],
           "audio": "audio/03-05-lambdas-and-the-underscore-shorthand.wav"
         },
         {
           "heading": "Named arguments and default parameters",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-fn-def"
           ],
           "focus": [
-            "sa-methods"
+            "sg-fn"
           ],
           "audio": "audio/03-06-named-arguments-and-default-parameters.wav"
         },
         {
           "heading": "Multiple parameter lists — and why they matter",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-fn-curry"
           ],
           "focus": [
-            "sa-methods"
+            "sg-fn"
           ],
           "audio": "audio/03-07-multiple-parameter-lists-and-why-they.wav"
         },
         {
           "heading": "Currying and partial application",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-fn-hof",
-            "sa-method-def"
+            "sg-fn-curry"
           ],
           "focus": [
-            "sa-functions"
+            "sg-fn"
           ],
           "audio": "audio/03-08-currying-and-partial-application.wav"
         },
         {
           "heading": "By-name parameters — passing the expression, not its value",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-fn-hof"
           ],
           "focus": [
-            "sa-methods"
+            "sg-fn"
           ],
           "audio": "audio/03-09-by-name-parameters-passing-the-expression.wav"
         },
         {
           "heading": "Vararg parameters",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-fn-def"
           ],
           "focus": [
-            "sa-methods"
+            "sg-fn"
           ],
           "audio": "audio/03-10-vararg-parameters.wav"
         },
         {
           "heading": "The `FunctionN` family — what a function value really is",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-fn-lambda",
-            "sa-fn-closure"
+            "sg-fn-lambda"
           ],
           "focus": [
-            "sa-functions"
+            "sg-fn"
           ],
           "audio": "audio/03-11-the-functionn-family-what-a-function.wav"
         },
         {
           "heading": "Methods inside methods — local functions",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-fn-def"
           ],
           "focus": [
-            "sa-methods"
+            "sg-fn"
           ],
           "audio": "audio/03-12-methods-inside-methods-local-functions.wav"
         },
         {
           "heading": "Preview — `inline def`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-fn-def"
           ],
           "focus": [
-            "sa-methods"
+            "sg-fn"
           ],
           "audio": "audio/03-13-preview-inline-def.wav"
         }
@@ -543,274 +539,270 @@
       "id": "04-collections",
       "title": "Collections",
       "notebook": "notebooks/04-collections.ipynb",
-      "defaultScene": "scala-anatomy",
+      "defaultScene": "scala-grammar",
       "sections": [
         {
           "heading": "Part 1 — Shapes",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "role": "hook",
           "highlight": [
-            "sa-type-coll"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type"
+            "sg-co"
           ],
           "audio": "audio/04-01-part-1-shapes.wav"
         },
         {
           "heading": "The landscape in one breath",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-type-coll"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type"
+            "sg-co"
           ],
           "audio": "audio/04-02-the-landscape-in-one-breath.wav"
         },
         {
           "heading": "Immutable does not mean slow",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-hamt"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-memory"
+            "sg-co"
           ],
           "audio": "audio/04-03-immutable-does-not-mean-slow.wav"
         },
         {
           "heading": "`List` — the singly-linked default",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-coll-list"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type-coll"
+            "sg-co"
           ],
           "audio": "audio/04-04-list-the-singly-linked-default.wav"
         },
         {
           "heading": "`Vector` — the default indexed sequence",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-coll-vector"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type-coll"
+            "sg-co"
           ],
           "audio": "audio/04-05-vector-the-default-indexed-sequence.wav"
         },
         {
           "heading": "`Set` — uniqueness and membership",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-coll-set"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type-coll"
+            "sg-co"
           ],
           "audio": "audio/04-06-set-uniqueness-and-membership.wav"
         },
         {
           "heading": "`Map` — key to value lookup",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-coll-map"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type-coll"
+            "sg-co"
           ],
           "audio": "audio/04-07-map-key-to-value-lookup.wav"
         },
         {
           "heading": "`Array` — the mutable, fixed-size, java-flavoured one",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-array"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type"
+            "sg-co"
           ],
           "audio": "audio/04-08-array-the-mutable-fixed-size-java.wav"
         },
         {
           "heading": "Tuples — small, fixed groupings",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-tuple"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type"
+            "sg-co"
           ],
           "audio": "audio/04-09-tuples-small-fixed-groupings.wav"
         },
         {
           "heading": "Picking a shape — the cheat sheet",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-type-coll"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-type"
+            "sg-co"
           ],
           "audio": "audio/04-10-picking-a-shape-the-cheat-sheet.wav"
         },
         {
           "heading": "Part 2 — Operations",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-coll-ops"
+            "sg-co-mff"
           ],
           "focus": [
-            "sa-verbs"
+            "sg-co"
           ],
           "audio": "audio/04-11-part-2-operations.wav"
         },
         {
           "heading": "`map`, `filter`, `flatMap` — the three you'll use every day",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-op-map",
-            "sa-op-filter",
-            "sa-op-flatmap"
+            "sg-co-mff"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-12-map-filter-flatmap-the-three-you-ll-use.wav"
         },
         {
           "heading": "`fold` and `reduce` — aggregation",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-op-fold"
+            "sg-co-fold"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-13-fold-and-reduce-aggregation.wav"
         },
         {
           "heading": "`groupBy` and `groupMapReduce` — flat to keyed",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-op-groupby"
+            "sg-co-fold"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-14-groupby-and-groupmapreduce-flat-to-keyed.wav"
         },
         {
           "heading": "`partition`, `span`, `splitAt` — slicing",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-op-filter"
+            "sg-co-fold"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-15-partition-span-splitat-slicing.wav"
         },
         {
           "heading": "`zip`, `unzip` — pairing two sequences",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-op-zip"
+            "sg-co-ops"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-16-zip-unzip-pairing-two-sequences.wav"
         },
         {
           "heading": "`sortBy`, `sortWith`, `sorted` — three flavours of ordering",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-coll-ops"
+            "sg-co-ops"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-17-sortby-sortwith-sorted-three-flavours-of.wav"
         },
         {
           "heading": "`take`, `drop`, `takeWhile`, `dropWhile`, `find`, `exists`, `forall`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-coll-ops"
+            "sg-co-ops"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-18-take-drop-takewhile-dropwhile-find-exists.wav"
         },
         {
           "heading": "`collect` — `map` plus `filter` in one pass",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-op-map",
-            "sa-op-filter"
+            "sg-co-ops"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-19-collect-map-plus-filter-in-one-pass.wav"
         },
         {
           "heading": "`for-yield` — and what it actually compiles to",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-loop-for",
-            "sa-loop-desugar"
+            "sg-co-mff"
           ],
           "focus": [
-            "sa-loops"
+            "sg-co"
           ],
           "audio": "audio/04-20-for-yield-and-what-it-actually-compiles-to.wav"
         },
         {
           "heading": "Lazy collections — `view`, `Iterator`, `LazyList`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-coll-ops"
+            "sg-co-ops"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-21-lazy-collections-view-iterator-lazylist.wav"
         },
         {
           "heading": "Conversions and interop",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-coll-ops"
+            "sg-co-shapes"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-co"
           ],
           "audio": "audio/04-22-conversions-and-interop.wav"
         }
@@ -820,183 +812,174 @@
       "id": "05-oop-classes-traits-case-classes-enums",
       "title": "OOP — Classes, Traits, Case Classes & Enums",
       "notebook": "notebooks/05-oop-classes-traits-case-classes-enums.ipynb",
-      "defaultScene": "scala-anatomy",
+      "defaultScene": "scala-grammar",
       "sections": [
         {
           "heading": "`class` — the basics",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "role": "hook",
           "highlight": [
-            "sa-class"
+            "sg-oop-class"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-01-class-the-basics.wav"
         },
         {
           "heading": "Visibility and methods",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-oop-class"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-02-visibility-and-methods.wav"
         },
         {
           "heading": "`object` — singletons and companions",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-object"
+            "sg-oop-class"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-03-object-singletons-and-companions.wav"
         },
         {
           "heading": "`class` vs `object` vs `def` — when to use each",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-class",
-            "sa-object",
-            "sa-bind-def"
+            "sg-oop-class"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-04-class-vs-object-vs-def-when-to-use-each.wav"
         },
         {
           "heading": "`trait` — composable behaviour",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-trait"
+            "sg-oop-trait"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-05-trait-composable-behaviour.wav"
         },
         {
           "heading": "Trait linearization — the one rule for multiple inheritance",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-oop-mammal",
-            "sa-oop-walker"
+            "sg-oop-trait"
           ],
           "focus": [
-            "sa-model"
+            "sg-oop"
           ],
           "audio": "audio/05-06-trait-linearization-the-one-rule-for.wav"
         },
         {
           "heading": "`abstract class` versus `trait`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-oop-animal",
-            "sa-trait"
+            "sg-oop-trait"
           ],
           "focus": [
-            "sa-model"
+            "sg-oop"
           ],
           "audio": "audio/05-07-abstract-class-versus-trait.wav"
         },
         {
           "heading": "`case class` — the headline feature",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-case-class"
+            "sg-oop-case"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-08-case-class-the-headline-feature.wav"
         },
         {
           "heading": "`copy` and named updates — the immutable update idiom",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-case-class",
-            "sa-new-coll"
+            "sg-oop-case"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-09-copy-and-named-updates-the-immutable.wav"
         },
         {
           "heading": "`case object` — the singleton case",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-object",
-            "sa-case-class"
+            "sg-oop-case"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-10-case-object-the-singleton-case.wav"
         },
         {
           "heading": "`enum` — Scala 3's first-class ADT",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-enum",
-            "sa-adt"
+            "sg-oop-enum"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-11-enum-scala-3-s-first-class-adt.wav"
         },
         {
           "heading": "`enum` with parameters and methods",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-enum"
+            "sg-oop-enum"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-12-enum-with-parameters-and-methods.wav"
         },
         {
           "heading": "The Scala 2 shape — `sealed trait` + case classes",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-adt",
-            "sa-trait",
-            "sa-case-class"
+            "sg-oop-enum"
           ],
           "focus": [
-            "sa-type-oop"
+            "sg-oop"
           ],
           "audio": "audio/05-13-the-scala-2-shape-sealed-trait-case.wav"
         },
         {
           "heading": "Pattern matching preview — and why these shapes pair so well",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-pat-match"
+            "sg-oop-case"
           ],
           "focus": [
-            "sa-pattern"
+            "sg-oop"
           ],
           "audio": "audio/05-14-pattern-matching-preview-and-why-these.wav"
         }
@@ -1006,183 +989,174 @@
       "id": "06-pattern-matching-option-try-either",
       "title": "Pattern Matching, Option, Try & Either",
       "notebook": "notebooks/06-pattern-matching-option-try-either.ipynb",
-      "defaultScene": "scala-anatomy",
+      "defaultScene": "scala-grammar",
       "sections": [
         {
           "heading": "`match` — the basic shape",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "role": "hook",
           "highlight": [
-            "sa-pat-match"
+            "sg-pm-match"
           ],
           "focus": [
-            "sa-pattern"
+            "sg-pm"
           ],
           "audio": "audio/06-01-match-the-basic-shape.wav"
         },
         {
           "heading": "Pattern kinds — the seven shapes that cover almost everything",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-pat-match",
-            "sa-pat-unapply"
+            "sg-pm-match"
           ],
           "focus": [
-            "sa-pattern"
+            "sg-pm"
           ],
           "audio": "audio/06-02-pattern-kinds-the-seven-shapes-that-cover.wav"
         },
         {
           "heading": "Constructor patterns — destructuring case classes and enums",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-pat-unapply",
-            "sa-case-class"
+            "sg-pm-match"
           ],
           "focus": [
-            "sa-pattern"
+            "sg-pm"
           ],
           "audio": "audio/06-03-constructor-patterns-destructuring-case.wav"
         },
         {
           "heading": "Tuple, list, and sequence patterns",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-pat-unapply",
-            "sa-tuple"
+            "sg-pm-match"
           ],
           "focus": [
-            "sa-pattern"
+            "sg-pm"
           ],
           "audio": "audio/06-04-tuple-list-and-sequence-patterns.wav"
         },
         {
           "heading": "Guards, or-patterns, and bindings",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-ctrl-guard"
+            "sg-pm-match"
           ],
           "focus": [
-            "sa-control"
+            "sg-pm"
           ],
           "audio": "audio/06-05-guards-or-patterns-and-bindings.wav"
         },
         {
           "heading": "Pattern matching in vals and in for-comprehensions",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-pat-unapply",
-            "sa-loop-for"
+            "sg-pm-match"
           ],
           "focus": [
-            "sa-pattern"
+            "sg-pm"
           ],
           "audio": "audio/06-06-pattern-matching-in-vals-and-in-for.wav"
         },
         {
           "heading": "Exhaustiveness checking — the compiler's safety net",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-adt",
-            "sa-pat-match"
+            "sg-pm-match"
           ],
           "focus": [
-            "sa-pattern"
+            "sg-pm"
           ],
           "audio": "audio/06-07-exhaustiveness-checking-the-compiler-s.wav"
         },
         {
           "heading": "Partial functions — `{ case ... => ... }` as a value",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-pat-match",
-            "sa-fn-lambda"
+            "sg-pm-match"
           ],
           "focus": [
-            "sa-pattern"
+            "sg-pm"
           ],
           "audio": "audio/06-08-partial-functions-case-as-a-value.wav"
         },
         {
           "heading": "`Option[A]` — encoding \"value might be missing\"",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-typed"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/06-09-option-a-encoding-value-might-be-missing.wav"
         },
         {
           "heading": "Option combinators — `map`, `flatMap`, `getOrElse`, `fold`, `filter`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-typed-failure",
-            "sa-op-map",
-            "sa-op-flatmap"
+            "sg-pm-typed"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/06-10-option-combinators-map-flatmap-getorelse.wav"
         },
         {
           "heading": "`Try[A]` — encoding \"computation might have failed\"",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-typed"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/06-11-try-a-encoding-computation-might-have.wav"
         },
         {
           "heading": "`Either[E, A]` — encoding \"result is one of two possible types\"",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-typed"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/06-12-either-e-a-encoding-result-is-one-of-two.wav"
         },
         {
           "heading": "`for` comprehensions over Option, Try, and Either",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-loop-for",
-            "sa-typed-failure"
+            "sg-pm-typed"
           ],
           "focus": [
-            "sa-loops"
+            "sg-pm"
           ],
           "audio": "audio/06-13-for-comprehensions-over-option-try-and.wav"
         },
         {
           "heading": "When to reach for each",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-typed"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/06-14-when-to-reach-for-each.wav"
         }
@@ -1192,182 +1166,174 @@
       "id": "07-generics-variance-advanced-types",
       "title": "Generics, Variance & Advanced Types",
       "notebook": "notebooks/07-generics-variance-advanced-types.ipynb",
-      "defaultScene": "scala-anatomy",
+      "defaultScene": "scala-grammar",
       "sections": [
         {
           "heading": "Generics — type parameters",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "role": "hook",
           "highlight": [
-            "sa-generic"
+            "sg-gx-generics"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-01-generics-type-parameters.wav"
         },
         {
           "heading": "Upper and lower bounds — constraining type parameters",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-generic"
+            "sg-gx-generics"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-02-upper-and-lower-bounds-constraining-type.wav"
         },
         {
           "heading": "Variance — does `List[Dog]` count as `List[Animal]`?",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-generic",
-            "sa-coll-list"
+            "sg-gx-variance"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-03-variance-does-list-dog-count-as-list.wav"
         },
         {
           "heading": "The producer/consumer rule of thumb",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-generic"
+            "sg-gx-variance"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-04-the-producer-consumer-rule-of-thumb.wav"
         },
         {
           "heading": "Lower bounds on covariant type parameters",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-generic"
+            "sg-gx-variance"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-05-lower-bounds-on-covariant-type-parameters.wav"
         },
         {
           "heading": "Type erasure — what the JVM forgets at runtime",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-generic",
-            "sa-method-area"
+            "sg-gx-generics"
           ],
           "focus": [
-            "sa-memory"
+            "sg-gx"
           ],
           "audio": "audio/07-06-type-erasure-what-the-jvm-forgets-at.wav"
         },
         {
           "heading": "Opaque types — zero-cost nominal wrappers",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type",
-            "sa-generic"
+            "sg-gx-generics"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-07-opaque-types-zero-cost-nominal-wrappers.wav"
         },
         {
           "heading": "Intersection types — `A & B`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type",
-            "sa-trait"
+            "sg-gx-ext"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-08-intersection-types-a-b.wav"
         },
         {
           "heading": "Union types — `A | B`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-adt",
-            "sa-type"
+            "sg-gx-ext"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-09-union-types-a-b.wav"
         },
         {
           "heading": "Match types — types that compute",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type",
-            "sa-pat-match"
+            "sg-gx-ext"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-10-match-types-types-that-compute.wav"
         },
         {
           "heading": "Structural types — duck typing at the type level",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type"
+            "sg-gx-ext"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-11-structural-types-duck-typing-at-the-type.wav"
         },
         {
           "heading": "Self types — `this: X =>`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-trait",
-            "sa-oop-mammal"
+            "sg-gx-generics"
           ],
           "focus": [
-            "sa-model"
+            "sg-gx"
           ],
           "audio": "audio/07-12-self-types-this-x.wav"
         },
         {
           "heading": "Path-dependent types — briefly",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type"
+            "sg-gx-ext"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-13-path-dependent-types-briefly.wav"
         },
         {
           "heading": "Reading harder Scala signatures",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-generic",
-            "sa-type"
+            "sg-gx-generics"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/07-14-reading-harder-scala-signatures.wav"
         }
@@ -1377,168 +1343,162 @@
       "id": "08-givens-extensions",
       "title": "Givens & Extensions",
       "notebook": "notebooks/08-givens-and-extensions.ipynb",
-      "defaultScene": "scala-anatomy",
+      "defaultScene": "scala-grammar",
       "sections": [
         {
           "heading": "The problem implicits solve",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "role": "hook",
           "highlight": [
-            "sa-method-def"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-init-row"
+            "sg-gx"
           ],
           "audio": "audio/08-01-the-problem-implicits-solve.wav"
         },
         {
           "heading": "`using` parameters — declaring \"I need this in context\"",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-method-def",
-            "sa-kind"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-init-row"
+            "sg-gx"
           ],
           "audio": "audio/08-02-using-parameters-declaring-i-need-this-in.wav"
         },
         {
           "heading": "`given` instances — providing a value to context",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-bind-val",
-            "sa-value-object"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-init-row"
+            "sg-gx"
           ],
           "audio": "audio/08-03-given-instances-providing-a-value-to.wav"
         },
         {
           "heading": "Where the compiler looks for `given`s — implicit scope",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-type-oop"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-init-row"
+            "sg-gx"
           ],
           "audio": "audio/08-04-where-the-compiler-looks-for-givens.wav"
         },
         {
           "heading": "Type classes — the dominant pattern this enables",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-trait",
-            "sa-generic"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/08-05-type-classes-the-dominant-pattern-this.wav"
         },
         {
           "heading": "`summon` and explicit context lookup",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-call"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-methods"
+            "sg-gx"
           ],
           "audio": "audio/08-06-summon-and-explicit-context-lookup.wav"
         },
         {
           "heading": "Extension methods — adding methods to types you don't own",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-method-def",
-            "sa-method-call"
+            "sg-gx-ext"
           ],
           "focus": [
-            "sa-methods"
+            "sg-gx"
           ],
           "audio": "audio/08-07-extension-methods-adding-methods-to-types.wav"
         },
         {
           "heading": "Extensions + type classes — the receiver sugar",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def",
-            "sa-trait"
+            "sg-gx-ext"
           ],
           "focus": [
-            "sa-methods"
+            "sg-gx"
           ],
           "audio": "audio/08-08-extensions-type-classes-the-receiver-sugar.wav"
         },
         {
           "heading": "Context bounds — `[A: TypeClass]`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-generic"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/08-09-context-bounds-a-typeclass.wav"
         },
         {
           "heading": "`using` chains — composing environments",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-methods"
+            "sg-gx"
           ],
           "audio": "audio/08-10-using-chains-composing-environments.wav"
         },
         {
           "heading": "Conversions — `given Conversion[A, B]`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-value-object"
+            "sg-gx-ext"
           ],
           "focus": [
-            "sa-value"
+            "sg-gx"
           ],
           "audio": "audio/08-11-conversions-given-conversion-a-b.wav"
         },
         {
           "heading": "Standard library and ecosystem ay-pee-eyes that use this",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-trait",
-            "sa-generic"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-type"
+            "sg-gx"
           ],
           "audio": "audio/08-12-standard-library-and-ecosystem-ay-pee.wav"
         },
         {
           "heading": "Scala 2 → Scala 3 quick reference",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-method-def"
+            "sg-gx-given"
           ],
           "focus": [
-            "sa-init-row"
+            "sg-gx"
           ],
           "audio": "audio/08-13-scala-2-scala-3-quick-reference.wav"
         }
@@ -1548,179 +1508,174 @@
       "id": "09-concurrency-error-handling",
       "title": "Concurrency & Error Handling",
       "notebook": "notebooks/09-concurrency-and-error-handling.ipynb",
-      "defaultScene": "scala-anatomy",
+      "defaultScene": "scala-grammar",
       "sections": [
         {
           "heading": "The `Future[A]` mental model",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "role": "hook",
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/09-01-the-future-a-mental-model.wav"
         },
         {
           "heading": "`ExecutionContext` — the thread pool that runs futures",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-stack",
-            "sa-heap"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-memory"
+            "sg-pm"
           ],
           "audio": "audio/09-02-executioncontext-the-thread-pool-that.wav"
         },
         {
           "heading": "Future combinators",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-op-map",
-            "sa-op-flatmap",
-            "sa-typed-failure"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-pm"
           ],
           "audio": "audio/09-03-future-combinators.wav"
         },
         {
           "heading": "`for` comprehensions over futures",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-loop-for"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-loops"
+            "sg-pm"
           ],
           "audio": "audio/09-04-for-comprehensions-over-futures.wav"
         },
         {
           "heading": "`Future.sequence` and `Future.traverse`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-op-map",
-            "sa-typed-failure"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-coll-ops"
+            "sg-pm"
           ],
           "audio": "audio/09-05-future-sequence-and-future-traverse.wav"
         },
         {
           "heading": "`Promise[A]` — the write side of a future",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/09-06-promise-a-the-write-side-of-a-future.wav"
         },
         {
           "heading": "Blocking on a future",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-stack"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-memory"
+            "sg-pm"
           ],
           "audio": "audio/09-07-blocking-on-a-future.wav"
         },
         {
           "heading": "Why callbacks are mostly avoided",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-fn-lambda"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-functions"
+            "sg-pm"
           ],
           "audio": "audio/09-08-why-callbacks-are-mostly-avoided.wav"
         },
         {
           "heading": "What comes after `Future`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-future"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/09-09-what-comes-after-future.wav"
         },
         {
           "heading": "Error handling — `try` / `catch` / `finally`",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-try"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/09-10-error-handling-try-catch-finally.wav"
         },
         {
           "heading": "`Try` vs `try` — when each fits",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-typed-failure"
+            "sg-pm-try"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/09-11-try-vs-try-when-each-fits.wav"
         },
         {
           "heading": "`Using` — resource management",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-value-object"
+            "sg-pm-try"
           ],
           "focus": [
-            "sa-value"
+            "sg-pm"
           ],
           "audio": "audio/09-12-using-resource-management.wav"
         },
         {
           "heading": "The `AutoCloseable` contract — what makes something `Using`-compatible",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": false,
           "highlight": [
-            "sa-value-object"
+            "sg-pm-try"
           ],
           "focus": [
-            "sa-value"
+            "sg-pm"
           ],
           "audio": "audio/09-13-the-autocloseable-contract-what-makes.wav"
         },
         {
           "heading": "Failing fast vs returning errors as data",
-          "scene": "scala-anatomy",
+          "scene": "scala-grammar",
           "spine": true,
           "highlight": [
-            "sa-typed-failure",
-            "sa-effects"
+            "sg-pm-typed"
           ],
           "focus": [
-            "sa-results"
+            "sg-pm"
           ],
           "audio": "audio/09-14-failing-fast-vs-returning-errors-as-data.wav"
         }
